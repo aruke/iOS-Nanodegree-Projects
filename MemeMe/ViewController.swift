@@ -87,6 +87,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
         // TODO Save item after sharing
+        
+        // Save Meme to AppDelegate Context
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     @IBAction func onCancelClicked(_ sender: Any) {
@@ -211,13 +215,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     // MARK: Meme sharing methods
-    
-    struct MemeObject {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
-    }
     
     func generateMeme() -> MemeObject {
         let meme = MemeObject(
