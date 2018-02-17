@@ -18,6 +18,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedStringKey.strokeWidth.rawValue: -3.0]
+    var isEdited = false
     
     @IBOutlet weak var navigatonBar: UINavigationBar!
     @IBOutlet weak var topTextField: UITextField!
@@ -84,16 +85,25 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let activityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         
+        // Save Meme to AppDelegate Context
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
+        print("meme appended")
+        
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
         // TODO Save item after sharing
         
-        // Save Meme to AppDelegate Context
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.memes.append(meme)
+        
     }
     
     @IBAction func onCancelClicked(_ sender: Any) {
+        
+        if !isEdited {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        
         let alertController = UIAlertController(title: "Cancel Editing", message: "All the changes will be lost and Meme will reset. Are you sure?", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "No, go back to editor."), style: .default,
                                                 handler: {(action:UIAlertAction!) in
@@ -194,11 +204,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             topTextField.isEnabled = true
             bottomTextField.isEnabled = true
             actionButton.isEnabled = false
+            isEdited = true
             break
         case .MEME_COMPLETE:
             topTextField.isEnabled = true
             bottomTextField.isEnabled = true
             actionButton.isEnabled = true
+            isEdited = true
             break
         default: // BLANK
             topTextField.isEnabled = false
@@ -208,6 +220,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             imageView.image = nil
             topTextField.text = DEFAULT_TOP_TEXT
             bottomTextField.text = DEFAULT_BOTTOM_TEXT
+            isEdited = false
             break
         }
     }
