@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Rajanikant Deshmukh on 29/12/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     let DEFAULT_TOP_TEXT = "TOP TEXT"
     let DEFAULT_BOTTOM_TEXT = "BOTTOM TEXT"
@@ -99,9 +99,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                                                 handler: {(action:UIAlertAction!) in
                                                     
         }))
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Reset", comment: "Reset editor."), style: .destructive,
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Reset editor."), style: .destructive,
                                                 handler: {(action:UIAlertAction!) in
                                                     self.setViewState(.BLANK)
+                                                    self.dismiss(animated: true, completion: nil)
         }))
         
         present(alertController, animated: true, completion: nil)
@@ -193,19 +194,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             topTextField.isEnabled = true
             bottomTextField.isEnabled = true
             actionButton.isEnabled = false
-            cancelButton.isEnabled = true
             break
         case .MEME_COMPLETE:
             topTextField.isEnabled = true
             bottomTextField.isEnabled = true
             actionButton.isEnabled = true
-            cancelButton.isEnabled = true
             break
         default: // BLANK
             topTextField.isEnabled = false
             bottomTextField.isEnabled = false
             actionButton.isEnabled = false
-            cancelButton.isEnabled = false
             // Set to Defaults
             imageView.image = nil
             topTextField.text = DEFAULT_TOP_TEXT
