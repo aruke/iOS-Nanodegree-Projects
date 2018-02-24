@@ -76,16 +76,38 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK: NavigationBar Button Outlets
     @IBAction func onActionClicked(_ sender: Any) {
         // Create MemeObject
-        let meme = generateMeme()
-        let itemsToShare = [ meme.memedImage ]
+        let memedImage = generateMemedImage()
+        let itemsToShare = [ memedImage ]
         
         // Set up activity view controller
         let activityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         
+        // Set completion
+        activityViewController.completionWithItemsHandler = { (_, completed, _,  _) in
+            if !completed {
+                return
+            }
+            
+            let meme = MemeObject(
+                topText: self.topTextField.text!,
+                bottomText: self.bottomTextField.text!,
+                originalImage: self.imageView.image!,
+                memedImage: memedImage
+            )
+            
+            let alertMessage = "Meme '\(meme.topText), \(meme.bottomText)' was saved successfully."
+            
+            let alertController = UIAlertController(title: "Meme Saved", message: alertMessage , preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: nil))
+            
+            self.present(alertController, animated: true, completion: {
+                self.setViewState(.BLANK)
+            })
+        }
+        
         // present the view controller
-        self.present(activityViewController, animated: true, completion: nil)
-        // TODO Save item after sharing
+        self.present(activityViewController, animated: true)
     }
     
     @IBAction func onCancelClicked(_ sender: Any) {
@@ -216,16 +238,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         var bottomText: String
         var originalImage: UIImage
         var memedImage: UIImage
-    }
-    
-    func generateMeme() -> MemeObject {
-        let meme = MemeObject(
-            topText: topTextField.text!,
-            bottomText: bottomTextField.text!,
-            originalImage: imageView.image!,
-            memedImage: generateMemedImage()
-        )
-        return meme
     }
     
     func generateMemedImage() -> UIImage {
