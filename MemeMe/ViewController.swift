@@ -31,23 +31,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        topTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.textAlignment = .center
-        topTextField.delegate = self
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.textAlignment = .center
-        bottomTextField.delegate = self
-        
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        // Configure TextFields
+        configure(topTextField)
+        configure(bottomTextField)
         
         // Set suitable View state
         setViewState(.BLANK)
-        
+    }
+    
+    func configure(_ textField: UITextField) -> Void {
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,18 +59,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK: Image picker methods
 
     @IBAction func pickImageFromGallery(_ sender: Any) {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .photoLibrary
-        launchImagePicker(imagePickerController)
+        launchImagePicker(.photoLibrary)
     }
     
     @IBAction func pickImageFromCamera(_ sender: Any) {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .camera
-        launchImagePicker(imagePickerController)
+        launchImagePicker(.camera)
     }
     
-    func launchImagePicker(_ imagePickerController: UIImagePickerController) {
+    func launchImagePicker(_ source: UIImagePickerControllerSourceType) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = source
         imagePickerController.delegate = self
         self.present(imagePickerController, animated: true, completion: nil)
     }
