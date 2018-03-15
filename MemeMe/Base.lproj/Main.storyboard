@@ -24,7 +24,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odC-wE-FwS">
-                                <rect key="frame" x="0.0" y="24" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="AGD-if-WfZ"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="Meme Me" id="KaK-NY-zFY">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="bC6-1O-MZG">
@@ -41,11 +44,14 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bGX-4C-IOu">
-                                <rect key="frame" x="0.0" y="68" width="375" height="555"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" red="0.4012508095854922" green="0.4012508095854922" blue="0.4012508095854922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ke9-7l-e6d">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Auz-2L-ys8"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="XqD-vv-c6H"/>
                                     <barButtonItem title="Camera" image="camera" style="plain" id="dIW-DB-AVx">
@@ -66,7 +72,7 @@
                                 </variation>
                             </toolbar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP TEXT" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e6S-7i-s7s">
-                                <rect key="frame" x="16" y="116" width="343" height="14"/>
+                                <rect key="frame" x="16" y="112" width="343" height="14"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -80,22 +86,22 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Ke9-7l-e6d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8NJ-yJ-pkb" userLabel="Toolbar.leading"/>
-                            <constraint firstItem="Ke9-7l-e6d" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="FjV-oC-A1z" userLabel="Toolbar.bottom"/>
+                            <constraint firstItem="Ke9-7l-e6d" firstAttribute="leading" secondItem="OZq-YK-q4R" secondAttribute="leading" id="8NJ-yJ-pkb" userLabel="Toolbar.leading"/>
+                            <constraint firstItem="Ke9-7l-e6d" firstAttribute="bottom" secondItem="OZq-YK-q4R" secondAttribute="bottom" id="FjV-oC-A1z" userLabel="Toolbar.bottom"/>
                             <constraint firstItem="e6S-7i-s7s" firstAttribute="centerX" secondItem="bGX-4C-IOu" secondAttribute="centerX" id="HWC-I4-jq6"/>
                             <constraint firstItem="bGX-4C-IOu" firstAttribute="bottom" secondItem="Ke9-7l-e6d" secondAttribute="top" id="NS7-bQ-eTl"/>
                             <constraint firstItem="e6S-7i-s7s" firstAttribute="top" secondItem="bGX-4C-IOu" secondAttribute="top" constant="48" id="QxT-iQ-01o"/>
                             <constraint firstItem="2FY-vK-Dgn" firstAttribute="width" secondItem="bGX-4C-IOu" secondAttribute="width" constant="-32" id="Uez-QJ-v3Z"/>
                             <constraint firstItem="2FY-vK-Dgn" firstAttribute="bottom" secondItem="bGX-4C-IOu" secondAttribute="bottom" constant="-48" id="Zh6-d4-Gso"/>
                             <constraint firstItem="2FY-vK-Dgn" firstAttribute="centerX" secondItem="bGX-4C-IOu" secondAttribute="centerX" id="cAp-vZ-8nK"/>
-                            <constraint firstItem="odC-wE-FwS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="24" id="dN7-df-sVH" userLabel="Navigaton Bar.top"/>
-                            <constraint firstItem="Ke9-7l-e6d" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="fSb-Ua-OBG" userLabel="Toolbar.trailing"/>
+                            <constraint firstItem="odC-wE-FwS" firstAttribute="top" secondItem="OZq-YK-q4R" secondAttribute="top" id="dN7-df-sVH" userLabel="Navigaton Bar.top"/>
+                            <constraint firstItem="Ke9-7l-e6d" firstAttribute="trailing" secondItem="OZq-YK-q4R" secondAttribute="trailing" id="fSb-Ua-OBG" userLabel="Toolbar.trailing"/>
                             <constraint firstItem="bGX-4C-IOu" firstAttribute="leading" secondItem="OZq-YK-q4R" secondAttribute="leading" id="lrM-Sa-SYq"/>
                             <constraint firstItem="bGX-4C-IOu" firstAttribute="trailing" secondItem="OZq-YK-q4R" secondAttribute="trailing" id="nG3-9Y-rkF"/>
-                            <constraint firstItem="odC-wE-FwS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nVG-fg-r12" userLabel="Navigaton Bar.leading"/>
+                            <constraint firstItem="odC-wE-FwS" firstAttribute="leading" secondItem="OZq-YK-q4R" secondAttribute="leading" id="nVG-fg-r12" userLabel="Navigaton Bar.leading"/>
                             <constraint firstItem="bGX-4C-IOu" firstAttribute="top" secondItem="odC-wE-FwS" secondAttribute="bottom" id="oyc-A6-VmW"/>
                             <constraint firstItem="e6S-7i-s7s" firstAttribute="width" secondItem="bGX-4C-IOu" secondAttribute="width" constant="-32" id="paB-bc-Aps"/>
-                            <constraint firstItem="odC-wE-FwS" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="s1H-qP-G5h" userLabel="Navigaton Bar.trailing"/>
+                            <constraint firstItem="odC-wE-FwS" firstAttribute="trailing" secondItem="OZq-YK-q4R" secondAttribute="trailing" id="s1H-qP-G5h" userLabel="Navigaton Bar.trailing"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OZq-YK-q4R"/>
                     </view>
