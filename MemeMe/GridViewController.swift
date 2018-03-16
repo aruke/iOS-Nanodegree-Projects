@@ -10,8 +10,6 @@ import UIKit
 
 class GridViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var memes = [MemeObject]()
-    
     @IBOutlet weak var emptyTextView: UILabel!
     @IBOutlet weak var gridView: UICollectionView!
     
@@ -23,18 +21,17 @@ class GridViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        memes = appDelegate.memes
-        emptyTextView.isHidden = (memes.count != 0)
+        gridView.reloadData()
+        emptyTextView.isHidden = (MemeStorage.getCount() != 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return memes.count
+        return MemeStorage.getCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCellView", for: indexPath) as! MemeCollectionViewCell
-        cell.imageView.image = memes[indexPath.item].memedImage
+        cell.imageView.image = MemeStorage.get(indexPath.item).memedImage
         return cell
     }
     

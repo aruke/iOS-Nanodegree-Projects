@@ -10,8 +10,6 @@ import UIKit
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var memes = [MemeObject]()
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -23,17 +21,18 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        memes = appDelegate.memes
+        // TODO Show empty view
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memes.count
+        return MemeStorage.getCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeCellView")
-        let titleText = memes[indexPath.row].topText + " " + memes[indexPath.row].bottomText
+        let memeObject = MemeStorage.get(indexPath.row)
+        let titleText = memeObject.topText + " " + memeObject.bottomText
         cell?.textLabel?.text = titleText
         return cell!
     }

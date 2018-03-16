@@ -22,8 +22,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     var isEdited = false
     var isShared = false
     
-    var memes = [MemeObject]()
-    
     @IBOutlet weak var navigatonBar: UINavigationBar!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
@@ -37,10 +35,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        
-        // Init memes
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        memes = appDelegate.memes
     }
     
     override func viewDidLoad() {
@@ -106,7 +100,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             )
             
             // Save meme
-            self.memes.append(meme)
+            MemeStorage.addMeme(meme)
             
             self.isShared = true
             let alertMessage = "Meme was saved successfully."
