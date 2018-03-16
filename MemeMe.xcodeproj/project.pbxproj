@@ -49,6 +49,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50C36F04205C4E6A00A522AA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				50C36F02205C0C6900A522AA /* MemeTableViewCell.xib */,
+				50C36F00205C0A5100A522AA /* MemeTableViewCell.swift */,
+				507FA6C620383D34001BFCB9 /* ListViewController.swift */,
+				507FA6C820383D4A001BFCB9 /* GridViewController.swift */,
+				507FA6CA20386267001BFCB9 /* MemeCollectionViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		50C36F05205C4E7E00A522AA /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				50F97D2D1FF6638000B97A27 /* MemeEditorViewController.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		50C36F06205C4EF500A522AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				50898BE52033BBDC006D77E7 /* MemeObject.swift */,
+				50C36EFE205BC99A00A522AA /* MemeStorage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		50C36F07205C4F2200A522AA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				50F97D341FF6638000B97A27 /* LaunchScreen.storyboard */,
+				50F97D2F1FF6638000B97A27 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		50F97D1F1FF6638000B97A27 = {
 			isa = PBXGroup;
 			children = (
@@ -68,19 +106,13 @@
 		50F97D2A1FF6638000B97A27 /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
+				50C36F04205C4E6A00A522AA /* Home */,
+				50C36F05205C4E7E00A522AA /* Editor */,
+				50C36F06205C4EF500A522AA /* Model */,
+				50C36F07205C4F2200A522AA /* View */,
 				50F97D2B1FF6638000B97A27 /* AppDelegate.swift */,
-				50F97D2D1FF6638000B97A27 /* MemeEditorViewController.swift */,
-				50F97D2F1FF6638000B97A27 /* Main.storyboard */,
 				50F97D321FF6638000B97A27 /* Assets.xcassets */,
-				50F97D341FF6638000B97A27 /* LaunchScreen.storyboard */,
 				50F97D371FF6638000B97A27 /* Info.plist */,
-				50898BE52033BBDC006D77E7 /* MemeObject.swift */,
-				507FA6C620383D34001BFCB9 /* ListViewController.swift */,
-				507FA6C820383D4A001BFCB9 /* GridViewController.swift */,
-				507FA6CA20386267001BFCB9 /* MemeCollectionViewCell.swift */,
-				50C36EFE205BC99A00A522AA /* MemeStorage.swift */,
-				50C36F00205C0A5100A522AA /* MemeTableViewCell.swift */,
-				50C36F02205C0C6900A522AA /* MemeTableViewCell.xib */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
