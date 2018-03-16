@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Rajanikant Deshmukh on 29/12/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     let DEFAULT_TOP_TEXT = "TOP TEXT"
     let DEFAULT_BOTTOM_TEXT = "BOTTOM TEXT"
@@ -18,6 +18,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedStringKey.strokeWidth.rawValue: -3.0]
+    var isEdited = false
     
     @IBOutlet weak var navigatonBar: UINavigationBar!
     @IBOutlet weak var topTextField: UITextField!
@@ -111,14 +112,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func onCancelClicked(_ sender: Any) {
+        
+        if !isEdited {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        
         let alertController = UIAlertController(title: "Cancel Editing", message: "All the changes will be lost and Meme will reset. Are you sure?", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "No, go back to editor."), style: .default,
                                                 handler: {(action:UIAlertAction!) in
                                                     
         }))
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Reset", comment: "Reset editor."), style: .destructive,
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Reset editor."), style: .destructive,
                                                 handler: {(action:UIAlertAction!) in
                                                     self.setViewState(.BLANK)
+                                                    self.dismiss(animated: true, completion: nil)
         }))
         
         present(alertController, animated: true, completion: nil)
@@ -210,35 +218,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             topTextField.isEnabled = true
             bottomTextField.isEnabled = true
             actionButton.isEnabled = false
-            cancelButton.isEnabled = true
+            isEdited = true
             break
         case .MEME_COMPLETE:
             topTextField.isEnabled = true
             bottomTextField.isEnabled = true
             actionButton.isEnabled = true
-            cancelButton.isEnabled = true
+            isEdited = true
             break
         default: // BLANK
             topTextField.isEnabled = false
             bottomTextField.isEnabled = false
             actionButton.isEnabled = false
-            cancelButton.isEnabled = false
             // Set to Defaults
             imageView.image = nil
             topTextField.text = DEFAULT_TOP_TEXT
             bottomTextField.text = DEFAULT_BOTTOM_TEXT
+            isEdited = false
             break
         }
     }
     
     // MARK: Meme sharing methods
-    
-    struct MemeObject {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
-    }
+
     
     func generateMemedImage() -> UIImage {
         // Hide NavigationBar and Toolbar
