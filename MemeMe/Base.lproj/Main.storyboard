@@ -26,7 +26,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9y-EO-5V0">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Meme Me" id="Cpg-7b-tVv">
+                                    <navigationItem title="Sent Memes" id="Cpg-7b-tVv">
                                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="OAd-XB-Egx"/>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BjC-a7-eNY">
                                             <connections>
@@ -114,7 +114,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfL-Uz-IdK">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Meme Me" id="9aQ-Sk-POa">
+                                    <navigationItem title="Sent Memes" id="9aQ-Sk-POa">
                                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="qfT-bk-Um8"/>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="32o-nu-bJM">
                                             <connections>
@@ -189,11 +189,12 @@
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odC-wE-FwS">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="AGD-if-WfZ"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="rab-YS-tB4"/>
+                                    <constraint firstAttribute="height" constant="44" id="AGD-if-WfZ">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="32"/>
+                                    </constraint>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Meme Me" id="KaK-NY-zFY">
+                                    <navigationItem title="Meme Editor" id="KaK-NY-zFY">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lZY-bT-tpH">
                                             <connections>
                                                 <action selector="onCancelClicked:" destination="BYZ-38-t0r" id="hf5-EI-brQ"/>
@@ -209,7 +210,8 @@
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bGX-4C-IOu">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
-                                <color key="backgroundColor" red="0.4012508095854922" green="0.4012508095854922" blue="0.4012508095854922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ke9-7l-e6d">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
@@ -255,9 +257,13 @@
                             <constraint firstItem="Ke9-7l-e6d" firstAttribute="bottom" secondItem="OZq-YK-q4R" secondAttribute="bottom" id="FjV-oC-A1z" userLabel="Toolbar.bottom"/>
                             <constraint firstItem="e6S-7i-s7s" firstAttribute="centerX" secondItem="bGX-4C-IOu" secondAttribute="centerX" id="HWC-I4-jq6"/>
                             <constraint firstItem="bGX-4C-IOu" firstAttribute="bottom" secondItem="Ke9-7l-e6d" secondAttribute="top" id="NS7-bQ-eTl"/>
-                            <constraint firstItem="e6S-7i-s7s" firstAttribute="top" secondItem="bGX-4C-IOu" secondAttribute="top" constant="48" id="QxT-iQ-01o"/>
+                            <constraint firstItem="e6S-7i-s7s" firstAttribute="top" secondItem="bGX-4C-IOu" secondAttribute="top" constant="48" id="QxT-iQ-01o">
+                                <variation key="heightClass=compact-widthClass=compact" constant="32"/>
+                            </constraint>
                             <constraint firstItem="2FY-vK-Dgn" firstAttribute="width" secondItem="bGX-4C-IOu" secondAttribute="width" constant="-32" id="Uez-QJ-v3Z"/>
-                            <constraint firstItem="2FY-vK-Dgn" firstAttribute="bottom" secondItem="bGX-4C-IOu" secondAttribute="bottom" constant="-48" id="Zh6-d4-Gso"/>
+                            <constraint firstItem="2FY-vK-Dgn" firstAttribute="bottom" secondItem="bGX-4C-IOu" secondAttribute="bottom" constant="-48" id="Zh6-d4-Gso">
+                                <variation key="heightClass=compact-widthClass=compact" constant="-32"/>
+                            </constraint>
                             <constraint firstItem="2FY-vK-Dgn" firstAttribute="centerX" secondItem="bGX-4C-IOu" secondAttribute="centerX" id="cAp-vZ-8nK"/>
                             <constraint firstItem="odC-wE-FwS" firstAttribute="top" secondItem="OZq-YK-q4R" secondAttribute="top" id="dN7-df-sVH" userLabel="Navigaton Bar.top"/>
                             <constraint firstItem="Ke9-7l-e6d" firstAttribute="trailing" secondItem="OZq-YK-q4R" secondAttribute="trailing" id="fSb-Ua-OBG" userLabel="Toolbar.trailing"/>
@@ -293,6 +299,6 @@
         <image name="list" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="p5n-g1-ZSu"/>
+        <segue reference="K96-E3-yeO"/>
     </inferredMetricsTieBreakers>
 </document>

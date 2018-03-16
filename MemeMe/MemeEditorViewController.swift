@@ -18,7 +18,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedStringKey.strokeWidth.rawValue: -3.0]
+    
     var isEdited = false
+    var isShared = false
+    
+    var memes = [MemeObject]()
     
     @IBOutlet weak var navigatonBar: UINavigationBar!
     @IBOutlet weak var topTextField: UITextField!
@@ -33,6 +37,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        
+        // Init memes
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        memes = appDelegate.memes
     }
     
     override func viewDidLoad() {
@@ -97,14 +105,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                 memedImage: memedImage
             )
             
-            let alertMessage = "Meme '\(meme.topText), \(meme.bottomText)' was saved successfully."
+            // Save meme
+            self.memes.append(meme)
+            
+            self.isShared = true
+            let alertMessage = "Meme was saved successfully."
             
             let alertController = UIAlertController(title: "Meme Saved", message: alertMessage , preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: nil))
             
-            self.present(alertController, animated: true, completion: {
-                self.setViewState(.BLANK)
-            })
+            self.present(alertController, animated: true, completion: nil)
         }
         
         // present the view controller
@@ -113,7 +123,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func onCancelClicked(_ sender: Any) {
         
-        if !isEdited {
+        if !isEdited || isShared {
             self.dismiss(animated: true, completion: nil)
             return
         }
@@ -238,16 +248,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             topTextField.text = DEFAULT_TOP_TEXT
             bottomTextField.text = DEFAULT_BOTTOM_TEXT
             isEdited = false
+            isShared = false
             break
         }
     }
     
     // MARK: Meme sharing methods
 
-    
     func generateMemedImage() -> UIImage {
         // Hide NavigationBar and Toolbar
-        toggleExtraViews(makeVisible: false)
+        toggleExtraViews(hide: true)
         
         // Render view to an image
         UIGraphicsBeginImageContext(view.bounds.size)
@@ -256,14 +266,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         UIGraphicsEndImageContext()
         
         // Show 'em again
-        toggleExtraViews(makeVisible: true)
+        toggleExtraViews(hide: false)
         
         return memedImage
     }
     
-    private func toggleExtraViews(makeVisible: Bool) {
-        navigatonBar.isHidden = makeVisible
-        toolbar.isHidden = makeVisible
+    private func toggleExtraViews(hide: Bool) {
+        navigatonBar.isHidden = hide
+        toolbar.isHidden = hide
     }
 }
 
