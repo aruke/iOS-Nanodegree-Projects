@@ -129,9 +129,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <sections/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You haven't created any Memes yet 😞" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJt-PR-5zD">
-                                <rect key="frame" x="0.0" y="56" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven't created any Memes yet 😞" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJt-PR-5zD">
+                                <rect key="frame" x="53.5" y="324" width="268" height="18"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" red="0.5172239314" green="0.5172239314" blue="0.5172239314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -143,7 +142,9 @@
                             <constraint firstItem="RfL-Uz-IdK" firstAttribute="top" secondItem="jMP-vf-pW4" secondAttribute="top" id="52I-er-QJn"/>
                             <constraint firstItem="aGO-XE-ZCs" firstAttribute="leading" secondItem="jMP-vf-pW4" secondAttribute="leading" id="Ryk-Nc-HX9"/>
                             <constraint firstItem="aGO-XE-ZCs" firstAttribute="top" secondItem="RfL-Uz-IdK" secondAttribute="bottom" id="TbB-6K-yHW"/>
+                            <constraint firstItem="cJt-PR-5zD" firstAttribute="centerY" secondItem="J8o-3E-rR0" secondAttribute="centerY" id="a33-1x-0I7"/>
                             <constraint firstItem="RfL-Uz-IdK" firstAttribute="trailing" secondItem="J8o-3E-rR0" secondAttribute="trailing" id="c7a-yJ-uSQ"/>
+                            <constraint firstItem="cJt-PR-5zD" firstAttribute="centerX" secondItem="J8o-3E-rR0" secondAttribute="centerX" id="htw-1D-9ec"/>
                             <constraint firstItem="RfL-Uz-IdK" firstAttribute="leading" secondItem="J8o-3E-rR0" secondAttribute="leading" id="ity-N2-bJu"/>
                             <constraint firstItem="aGO-XE-ZCs" firstAttribute="bottom" secondItem="jMP-vf-pW4" secondAttribute="bottom" id="xhd-DR-Mad"/>
                         </constraints>
@@ -298,6 +299,6 @@
         <image name="list" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="p5n-g1-ZSu"/>
+        <segue reference="K96-E3-yeO"/>
     </inferredMetricsTieBreakers>
 </document>
