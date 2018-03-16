@@ -156,24 +156,27 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: Keyboard related methods
     
     func subscribeToKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        // Use UIKeyboardWillChangeFrame for supporting multiple keyboards
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: .UIKeyboardWillChangeFrame, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        // Removes all notification observers
+        NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func keyboardWillShow(_ notification:Notification) {
+    @objc func keyboardWillChange(_ notification:Notification) {
         if (bottomTextField.isFirstResponder) {
+            view.frame.origin.y = 0
             view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
     
     @objc func keyboardWillHide(_ notification:Notification) {
         if (bottomTextField.isFirstResponder) {
-            view.frame.origin.y += getKeyboardHeight(notification)
+            // Reset View to it's original position
+            view.frame.origin.y = 0
         }
     }
     
@@ -244,8 +247,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func generateMemedImage() -> UIImage {
         // Hide NavigationBar and Toolbar
-        navigatonBar.isHidden = true
-        toolbar.isHidden = true
+        toggleExtraViews(makeVisible: false)
         
         // Render view to an image
         UIGraphicsBeginImageContext(view.bounds.size)
@@ -254,10 +256,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         UIGraphicsEndImageContext()
         
         // Show 'em again
-        navigatonBar.isHidden = false
-        toolbar.isHidden = false
+        toggleExtraViews(makeVisible: true)
         
         return memedImage
+    }
+    
+    private func toggleExtraViews(makeVisible: Bool) {
+        navigatonBar.isHidden = makeVisible
+        toolbar.isHidden = makeVisible
     }
 }
 
