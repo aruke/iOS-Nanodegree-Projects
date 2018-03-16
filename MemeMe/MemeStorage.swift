@@ -7,11 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 class MemeStorage: NSObject {
     
     private static var memes = [MemeObject]()
-    private static var instance: MemeStorage = MemeStorage()
     
     private override init() {
     }
