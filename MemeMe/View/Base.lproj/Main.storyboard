@@ -271,6 +271,36 @@
             </objects>
             <point key="canvasLocation" x="1182" y="-197"/>
         </scene>
+        <!--Meme Details View Controller-->
+        <scene sceneID="Fcg-Ro-Fov">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailsViewController" hidesBottomBarWhenPushed="YES" id="dv0-vd-cXI" customClass="MemeDetailsViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fJA-qc-etY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fw1-Sf-Ctf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fw1-Sf-Ctf" firstAttribute="trailing" secondItem="fJA-qc-etY" secondAttribute="trailing" id="Fie-FI-pgP"/>
+                            <constraint firstItem="fw1-Sf-Ctf" firstAttribute="top" secondItem="UzG-FG-CBS" secondAttribute="top" id="I0X-sH-UqF"/>
+                            <constraint firstItem="fw1-Sf-Ctf" firstAttribute="leading" secondItem="fJA-qc-etY" secondAttribute="leading" id="Lij-aa-AOA"/>
+                            <constraint firstItem="fw1-Sf-Ctf" firstAttribute="bottom" secondItem="fJA-qc-etY" secondAttribute="bottom" id="uau-tT-1Ns"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UzG-FG-CBS"/>
+                    </view>
+                    <connections>
+                        <outlet property="memedImageView" destination="fw1-Sf-Ctf" id="JX5-WT-6NQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l2g-cZ-Nvk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2020" y="-197"/>
+        </scene>
         <!--List-->
         <scene sceneID="Xrd-pb-NyK">
             <objects>

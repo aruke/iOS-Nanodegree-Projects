@@ -37,6 +37,9 @@ class GridViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Process selection
+        let detailViewController: MemeDetailsViewController = storyboard?.instantiateViewController(withIdentifier: "MemeDetailsViewController") as! MemeDetailsViewController
+        detailViewController.position = indexPath.item
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     // MARK: UICollectionViewDelegateFlowLayout Methods
