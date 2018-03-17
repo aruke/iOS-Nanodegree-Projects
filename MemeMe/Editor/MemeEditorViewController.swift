@@ -224,6 +224,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         case .MEME_EDITING:
             topTextField.isEnabled = true
             bottomTextField.isEnabled = true
+            topTextField.alpha = 1.0
+            bottomTextField.alpha = 1.0
             actionButton.isEnabled = false
             isEdited = true
             break
@@ -236,6 +238,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         default: // BLANK
             topTextField.isEnabled = false
             bottomTextField.isEnabled = false
+            topTextField.alpha = 0.5
+            bottomTextField.alpha = 0.5
             actionButton.isEnabled = false
             // Set to Defaults
             imageView.image = nil

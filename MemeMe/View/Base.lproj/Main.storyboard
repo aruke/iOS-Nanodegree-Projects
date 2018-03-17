@@ -76,7 +76,6 @@
                         <viewLayoutGuide key="safeArea" id="2DV-FH-7fo"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sent Memes" id="Cpg-7b-tVv">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="OAd-XB-Egx"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BjC-a7-eNY">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="presentation" id="K96-E3-yeO"/>
@@ -124,7 +123,6 @@
                         <viewLayoutGuide key="safeArea" id="jMP-vf-pW4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sent Memes" id="9aQ-Sk-POa">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="qfT-bk-Um8"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="32o-nu-bJM">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="presentation" id="p5n-g1-ZSu"/>
