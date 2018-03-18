@@ -13,6 +13,8 @@
 		5057C3B020509DC600F988E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5057C3AF20509DC600F988E0 /* Assets.xcassets */; };
 		5057C3B320509DC600F988E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5057C3B120509DC600F988E0 /* LaunchScreen.storyboard */; };
 		50C36F0C205C74B300A522AA /* LoginViewController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F0B205C74B300A522AA /* LoginViewController+Extras.swift */; };
+		50C36F1E205EE67900A522AA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F1D205EE67900A522AA /* TableViewController.swift */; };
+		50C36F20205EE68C00A522AA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F1F205EE68C00A522AA /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		5057C3B220509DC600F988E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5057C3B420509DC600F988E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C36F0B205C74B300A522AA /* LoginViewController+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Extras.swift"; sourceTree = "<group>"; };
+		50C36F1D205EE67900A522AA /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		50C36F1F205EE68C00A522AA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,49 @@
 		5057C3A720509DC600F988E0 /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
+				50C36F1C205EE62500A522AA /* Login */,
+				50C36F19205EE60500A522AA /* Home */,
 				5057C3A820509DC600F988E0 /* AppDelegate.swift */,
-				5057C3AA20509DC600F988E0 /* LoginViewController.swift */,
 				5057C3AC20509DC600F988E0 /* Main.storyboard */,
 				5057C3AF20509DC600F988E0 /* Assets.xcassets */,
 				5057C3B120509DC600F988E0 /* LaunchScreen.storyboard */,
 				5057C3B420509DC600F988E0 /* Info.plist */,
-				50C36F0B205C74B300A522AA /* LoginViewController+Extras.swift */,
 			);
 			path = "On The Map";
+			sourceTree = "<group>";
+		};
+		50C36F19205EE60500A522AA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				50C36F1B205EE61C00A522AA /* Table */,
+				50C36F1A205EE61500A522AA /* Map */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		50C36F1A205EE61500A522AA /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				50C36F1F205EE68C00A522AA /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		50C36F1B205EE61C00A522AA /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				50C36F1D205EE67900A522AA /* TableViewController.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		50C36F1C205EE62500A522AA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5057C3AA20509DC600F988E0 /* LoginViewController.swift */,
+				50C36F0B205C74B300A522AA /* LoginViewController+Extras.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +180,8 @@
 				5057C3AB20509DC600F988E0 /* LoginViewController.swift in Sources */,
 				50C36F0C205C74B300A522AA /* LoginViewController+Extras.swift in Sources */,
 				5057C3A920509DC600F988E0 /* AppDelegate.swift in Sources */,
+				50C36F20205EE68C00A522AA /* MapViewController.swift in Sources */,
+				50C36F1E205EE67900A522AA /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
