@@ -18,6 +18,7 @@ extension LoginViewController : UITextFieldDelegate {
             passwordTextField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
+            startLogin()
         }
         return true
     }
