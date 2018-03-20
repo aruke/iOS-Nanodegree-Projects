@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 extension Dictionary {
     func json() -> String {
@@ -16,5 +17,17 @@ extension Dictionary {
         } catch {
             return ""
         }
+    }
+}
+
+extension StudentLocation {
+    
+    func annotation() -> MKPointAnnotation {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate.latitude = self.latitude
+        annotation.coordinate.longitude = longitude
+        annotation.title = "\(self.firstName) \(self.lastName)"
+        annotation.subtitle = self.mediaURL
+        return annotation
     }
 }
