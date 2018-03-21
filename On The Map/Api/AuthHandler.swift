@@ -14,6 +14,8 @@ class AuthHandler: NSObject {
     private let KEY_UDACITY = "udacity"
     private let KEY_USERNAME = "username"
     private let KEY_PASSWORD = "password"
+    
+    private let KEY_STATUS = "status"
     private let KEY_ACCOUNT = "account"
     private let KEY_ACC_KEY = "key"
     private let KEY_SESSION = "session"
@@ -47,16 +49,34 @@ class AuthHandler: NSObject {
             
             // TODO: Check for status code
             
-            let range = Range(5..<data!.count)
-            let newData = data?.subdata(in: range) /* subset response data! */
-            print(String(data: newData!, encoding: .utf8)!)
-            onComplete(nil, self.parseUdacityAuthResponse(data: newData))
+                let range = Range(5..<data!.count)
+                let newData = data?.subdata(in: range) /* subset response data! */
+                print(String(data: newData!, encoding: .utf8)!)
+            
+            let responseDict = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! NSDictionary
+            
+            if responseDict[self.KEY_ACCOUNT] != nil && responseDict[self.KEY_SESSION] != nil {
+                onComplete(nil, self.parseUdacityAuthResponse(responseDict: responseDict))
+                return
+            } else if responseDict[self.KEY_STATUS] != nil {
+                let status = responseDict[self.KEY_STATUS] as! Int
+                // 400 : Parameter Missing
+                // 403 : Account not found or invalid credentials.
+                if status == 403 {
+                    let errorMessage = responseDict["error"] as! String
+                    onComplete(AuthError(message: errorMessage), self.parseUdacityAuthResponse(responseDict: responseDict))
+                    return
+                }
+            }
+            
+            // If all possible+valid cases are over
+            onComplete(UnknownError(message: "Unknown Error Occurred"), self.parseUdacityAuthResponse(responseDict: responseDict))
+            
         }
         task.resume()
     }
     
-    private func parseUdacityAuthResponse(data: Data?) -> UdacityAuthResponse? {
-        let responseDict = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! NSDictionary
+    private func parseUdacityAuthResponse(responseDict: NSDictionary) -> UdacityAuthResponse? {
         
         let account: NSDictionary = responseDict[KEY_ACCOUNT] as! NSDictionary
         let accountKey: String = account[KEY_ACC_KEY] as! String
