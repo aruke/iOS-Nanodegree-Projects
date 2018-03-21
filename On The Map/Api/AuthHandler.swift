@@ -14,6 +14,11 @@ class AuthHandler: NSObject {
     private let KEY_UDACITY = "udacity"
     private let KEY_USERNAME = "username"
     private let KEY_PASSWORD = "password"
+    private let KEY_ACCOUNT = "account"
+    private let KEY_ACC_KEY = "key"
+    private let KEY_SESSION = "session"
+    private let KEY_ID = "id"
+    private let KEY_EXPIRATION = "expiration"
     
     static let shared = AuthHandler()
     
@@ -39,12 +44,29 @@ class AuthHandler: NSObject {
                 onComplete(error!, nil)
                 return
             }
+            
+            // TODO: Check for status code
+            
             let range = Range(5..<data!.count)
             let newData = data?.subdata(in: range) /* subset response data! */
             print(String(data: newData!, encoding: .utf8)!)
-            onComplete(nil, UdacityAuthResponse())
+            onComplete(nil, self.parseUdacityAuthResponse(data: newData))
         }
         task.resume()
+    }
+    
+    private func parseUdacityAuthResponse(data: Data?) -> UdacityAuthResponse? {
+        let responseDict = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! NSDictionary
+        
+        let account: NSDictionary = responseDict[KEY_ACCOUNT] as! NSDictionary
+        let accountKey: String = account[KEY_ACC_KEY] as! String
+        
+        let session: NSDictionary = responseDict[KEY_SESSION] as! NSDictionary
+        let sessionId = session[KEY_ID]
+        // TODO: Parse Date
+        let expirationString: String = session[KEY_EXPIRATION] as! String
+        
+        return UdacityAuthResponse(sessionId: sessionId as! String, expiration: Date(), accountKey: accountKey)
     }
     
     // Delete Udacity session
@@ -61,7 +83,8 @@ class AuthHandler: NSObject {
         }
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
-            if error != nil { // Handle error…
+            if error != nil {
+                // Handle error
                 return
             }
             let range = Range(5..<data!.count)

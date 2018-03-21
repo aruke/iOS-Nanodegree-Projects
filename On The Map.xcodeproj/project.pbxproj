@@ -18,6 +18,7 @@
 		5057C3AE20509DC600F988E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5057C3AC20509DC600F988E0 /* Main.storyboard */; };
 		5057C3B020509DC600F988E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5057C3AF20509DC600F988E0 /* Assets.xcassets */; };
 		5057C3B320509DC600F988E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5057C3B120509DC600F988E0 /* LaunchScreen.storyboard */; };
+		506DEF8F206158B90001F4C4 /* TableViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DEF8E206158B90001F4C4 /* TableViewController+TableViewDelegate.swift */; };
 		50C36F0C205C74B300A522AA /* LoginViewController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F0B205C74B300A522AA /* LoginViewController+Extras.swift */; };
 		50C36F1E205EE67900A522AA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F1D205EE67900A522AA /* TableViewController.swift */; };
 		50C36F20205EE68C00A522AA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F1F205EE68C00A522AA /* MapViewController.swift */; };
@@ -37,6 +38,7 @@
 		5057C3AF20509DC600F988E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5057C3B220509DC600F988E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5057C3B420509DC600F988E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		506DEF8E206158B90001F4C4 /* TableViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		50C36F0B205C74B300A522AA /* LoginViewController+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Extras.swift"; sourceTree = "<group>"; };
 		50C36F1D205EE67900A522AA /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		50C36F1F205EE68C00A522AA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				50C36F1D205EE67900A522AA /* TableViewController.swift */,
+				506DEF8E206158B90001F4C4 /* TableViewController+TableViewDelegate.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			files = (
 				5057C3AB20509DC600F988E0 /* LoginViewController.swift in Sources */,
 				50139969206003E100218970 /* AuthHandler.swift in Sources */,
+				506DEF8F206158B90001F4C4 /* TableViewController+TableViewDelegate.swift in Sources */,
 				50C36F0C205C74B300A522AA /* LoginViewController+Extras.swift in Sources */,
 				5013996C206006CA00218970 /* Extensions.swift in Sources */,
 				5020288D206039A90069E1C3 /* ParseHandler.swift in Sources */,
