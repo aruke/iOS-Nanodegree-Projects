@@ -42,11 +42,17 @@ class LoginViewController: UIViewController {
         let email = emailTextField.text!
         let password = passwordTextField.text!
         
+        if email.isEmpty || password.isEmpty {
+            showAlertDialog(title: "Empty Fields", message: "Please enter both email and password to continue.", dismissHandler: nil)
+            return
+        }
+        
         setViewState(ViewState.LOADING)
         AuthHandler.shared.makeLoginCall(email: email, password: password, onComplete: {error, response in
             DispatchQueue.main.async(execute: {
                 self.setViewState(ViewState.IDLE)
                 self.onLoginResult(error: error, response: response)
+                self.setViewState(ViewState.IDLE)
             })
         })
     }
@@ -54,6 +60,7 @@ class LoginViewController: UIViewController {
     func onLoginResult(error: Error?, response: UdacityAuthResponse?) {
         if error != nil {
             // TODO Show appropriate alert
+            showAlertDialog(title: "Error", message: (error?.localizedDescription)!, dismissHandler: nil)
             return
         }
         
@@ -90,4 +97,3 @@ class LoginViewController: UIViewController {
         }
     }
 }
-

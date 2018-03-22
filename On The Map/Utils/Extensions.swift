@@ -31,3 +31,12 @@ extension StudentLocation {
         return annotation
     }
 }
+
+extension UIViewController {
+    
+    func showAlertDialog(title: String, message: String, dismissHandler: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: dismissHandler))
+        self.present(alert, animated: true)
+    }
+}

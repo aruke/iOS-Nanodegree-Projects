@@ -53,7 +53,7 @@ class AuthHandler: NSObject {
                 let newData = data?.subdata(in: range) /* subset response data! */
                 print(String(data: newData!, encoding: .utf8)!)
             
-            let responseDict = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! NSDictionary
+            let responseDict = try! JSONSerialization.jsonObject(with: newData!, options: .allowFragments) as! NSDictionary
             
             if responseDict[self.KEY_ACCOUNT] != nil && responseDict[self.KEY_SESSION] != nil {
                 onComplete(nil, self.parseUdacityAuthResponse(responseDict: responseDict))
@@ -64,7 +64,7 @@ class AuthHandler: NSObject {
                 // 403 : Account not found or invalid credentials.
                 if status == 403 {
                     let errorMessage = responseDict["error"] as! String
-                    onComplete(AuthError(message: errorMessage), self.parseUdacityAuthResponse(responseDict: responseDict))
+                    onComplete(AuthError(message: errorMessage), nil)
                     return
                 }
             }
