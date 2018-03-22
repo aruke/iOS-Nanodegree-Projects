@@ -148,8 +148,8 @@
                         <viewLayoutGuide key="safeArea" id="1tv-K8-amM"/>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="IoP-eA-mGs">
-                        <barButtonItem key="leftBarButtonItem" title="Pin" image="icon_pin" id="vq9-9K-UdG"/>
-                        <barButtonItem key="rightBarButtonItem" title="Refresh" image="icon_refresh" id="ntn-GB-uXk"/>
+                        <barButtonItem key="leftBarButtonItem" title="Account" image="account" id="oRn-Ps-Mzu"/>
+                        <barButtonItem key="rightBarButtonItem" title="Pin" image="map-pin" id="vq9-9K-UdG"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="lU4-xM-tNH" id="wR5-Z8-Q1R"/>
@@ -181,8 +181,8 @@
                         <viewLayoutGuide key="safeArea" id="hDl-rb-3Al"/>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="z9e-EU-eH7">
-                        <barButtonItem key="leftBarButtonItem" image="icon_pin" id="GmA-ZI-fRY"/>
-                        <barButtonItem key="rightBarButtonItem" title="Refresh" image="icon_refresh" id="yc1-y7-2yB"/>
+                        <barButtonItem key="leftBarButtonItem" title="Account" image="account" id="Xim-3s-Dsn"/>
+                        <barButtonItem key="rightBarButtonItem" image="map-pin" id="GmA-ZI-fRY"/>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="yaA-Qv-Ues" id="sT7-lE-ePv"/>
@@ -251,11 +251,11 @@
     </scenes>
     <resources>
         <image name="LaunchLogo" width="80" height="80"/>
+        <image name="account" width="24" height="24"/>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_listview-selected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
         <image name="icon_mapview-selected" width="75" height="50"/>
-        <image name="icon_pin" width="24" height="24"/>
-        <image name="icon_refresh" width="24" height="24"/>
+        <image name="map-pin" width="24" height="24"/>
     </resources>
 </document>
