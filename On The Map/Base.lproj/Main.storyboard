@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +148,11 @@
                         <viewLayoutGuide key="safeArea" id="1tv-K8-amM"/>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="IoP-eA-mGs">
-                        <barButtonItem key="leftBarButtonItem" title="Account" image="account" id="oRn-Ps-Mzu"/>
+                        <barButtonItem key="leftBarButtonItem" title="Account" image="account" id="oRn-Ps-Mzu">
+                            <connections>
+                                <segue destination="zAX-Sf-edG" kind="show" id="lfq-7k-R3Z"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Pin" image="map-pin" id="vq9-9K-UdG"/>
                     </navigationItem>
                     <connections>
@@ -181,7 +185,11 @@
                         <viewLayoutGuide key="safeArea" id="hDl-rb-3Al"/>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="z9e-EU-eH7">
-                        <barButtonItem key="leftBarButtonItem" title="Account" image="account" id="Xim-3s-Dsn"/>
+                        <barButtonItem key="leftBarButtonItem" title="Account" image="account" id="Xim-3s-Dsn">
+                            <connections>
+                                <segue destination="zAX-Sf-edG" kind="show" id="R5n-hC-C4Y"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="map-pin" id="GmA-ZI-fRY"/>
                     </navigationItem>
                     <connections>
@@ -191,6 +199,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qlz-CY-AZJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2597.5999999999999" y="-201.04947526236884"/>
+        </scene>
+        <!--Account View Controller-->
+        <scene sceneID="sRY-O6-NfK">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="zAX-Sf-edG" customClass="AccountViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SYk-6r-jrK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lqk-Ch-r9v">
+                                <rect key="frame" x="123" y="269.5" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="Hmc-gp-Rjz"/>
+                                    <constraint firstAttribute="height" constant="128" id="zQ9-af-MYu"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kx8-Dk-QDR" userLabel="Nickname">
+                                <rect key="frame" x="187" y="237.5" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19P-V1-8TL" userLabel="Name">
+                                <rect key="frame" x="187" y="429.5" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15n-Am-8Ev" userLabel="Logout Button">
+                                <rect key="frame" x="158.5" y="461.5" width="57" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="onLogoutClick:" destination="zAX-Sf-edG" eventType="touchUpInside" id="4xh-xL-BBt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Kx8-Dk-QDR" firstAttribute="centerX" secondItem="Lqk-Ch-r9v" secondAttribute="centerX" id="Evb-hw-BCd"/>
+                            <constraint firstItem="15n-Am-8Ev" firstAttribute="top" secondItem="19P-V1-8TL" secondAttribute="bottom" constant="32" id="MZ0-IY-Kk7"/>
+                            <constraint firstItem="Lqk-Ch-r9v" firstAttribute="centerX" secondItem="SYk-6r-jrK" secondAttribute="centerX" id="Qej-wn-vFc"/>
+                            <constraint firstItem="Lqk-Ch-r9v" firstAttribute="centerY" secondItem="SYk-6r-jrK" secondAttribute="centerY" id="TIh-Du-KZq"/>
+                            <constraint firstItem="19P-V1-8TL" firstAttribute="top" secondItem="Lqk-Ch-r9v" secondAttribute="bottom" constant="32" id="eCT-ro-qjP"/>
+                            <constraint firstItem="Kx8-Dk-QDR" firstAttribute="bottom" secondItem="Lqk-Ch-r9v" secondAttribute="top" constant="-32" id="gfe-1b-WO7"/>
+                            <constraint firstItem="19P-V1-8TL" firstAttribute="centerX" secondItem="Lqk-Ch-r9v" secondAttribute="centerX" id="ubZ-ms-JAy"/>
+                            <constraint firstItem="15n-Am-8Ev" firstAttribute="centerX" secondItem="19P-V1-8TL" secondAttribute="centerX" id="x50-BQ-hsL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="map-03-Mfe"/>
+                    </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="logoutButton" destination="15n-Am-8Ev" id="yVx-AB-uei"/>
+                        <outlet property="nameLabel" destination="19P-V1-8TL" id="PRp-ab-U5a"/>
+                        <outlet property="nicknameLabel" destination="Kx8-Dk-QDR" id="DId-Js-S1x"/>
+                        <outlet property="userImage" destination="Lqk-Ch-r9v" id="dr5-8n-t2z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Btd-yt-nRN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3410" y="133"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="fne-y2-AJA">
@@ -208,7 +277,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W28-43-kD6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="988" y="133"/>
+            <point key="canvasLocation" x="1114" y="133"/>
         </scene>
         <!--Map-->
         <scene sceneID="eKN-7h-Icb">
@@ -258,4 +327,7 @@
         <image name="icon_mapview-selected" width="75" height="50"/>
         <image name="map-pin" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="lfq-7k-R3Z"/>
+    </inferredMetricsTieBreakers>
 </document>

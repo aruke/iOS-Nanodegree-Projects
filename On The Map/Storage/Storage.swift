@@ -26,9 +26,16 @@ class UserAuthStorage {
     }
     
     func storeUserAuth(_ auth: UdacityAuthResponse) {
-        // Store in USerDefaults
+        // Store in UserDefaults
         UserDefaults.standard.set(auth.sessionId, forKey: "UdacityAuthResponse.sessionId")
         UserDefaults.standard.set(auth.accountKey, forKey: "UdacityAuthResponse.accountKey")
         UserDefaults.standard.set(auth.dateString(), forKey: "UdacityAuthResponse.dateString")
+    }
+    
+    func clearUserAuth() {
+        // Clear UserDefaults
+        UserDefaults.standard.removeObject(forKey: "UdacityAuthResponse.sessionId")
+        UserDefaults.standard.removeObject(forKey: "UdacityAuthResponse.accountKey")
+        UserDefaults.standard.removeObject(forKey: "UdacityAuthResponse.dateString")
     }
 }

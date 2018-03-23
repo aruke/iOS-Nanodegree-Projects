@@ -125,7 +125,7 @@ class AuthHandler: NSObject {
     }
     
     // Delete Udacity session
-    func makeLogoutCall() {
+    func makeLogoutCall(_ onComplete: @escaping (Errors?) -> Void) {
         var request = URLRequest(url: AUTH_ENDPOINT_URL)
         request.httpMethod = ApiConstants.Method.DELETE
         var xsrfCookie: HTTPCookie? = nil
@@ -139,12 +139,22 @@ class AuthHandler: NSObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil {
-                // Handle error
+                if let urlError = error as? URLError {
+                    switch urlError.code {
+                    case .notConnectedToInternet:
+                        onComplete(Errors.NetworkError)
+                        break
+                    default:
+                        onComplete(Errors.ServerError)
+                    }
+                }
+                onComplete(Errors.ServerError)
                 return
             }
             let range = Range(5..<data!.count)
             let newData = data?.subdata(in: range) /* subset response data! */
             print(String(data: newData!, encoding: .utf8)!)
+            onComplete(nil)
         }
         task.resume()
     }

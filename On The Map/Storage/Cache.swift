@@ -12,18 +12,12 @@ class Cache {
     
     static let shared = Cache()
     
-    private var _userInfo: UserInfo?
-    private var _studentLocations: [StudentLocation]?
+    var userInfo: UserInfo? {
+        didSet {
+            
+        }
+    }
+    var studentLocations: [StudentLocation]?
     
     private init() {}
-    
-    var userInfo: UserInfo? {
-        set { _userInfo = userInfo }
-        get { return _userInfo }
-    }
-    
-    var studentLocations: [StudentLocation]? {
-        set { _studentLocations = studentLocations }
-        get { return _studentLocations }
-    }
 }
