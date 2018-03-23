@@ -28,4 +28,17 @@ struct ApiConstants {
     struct HeaderValue {
         static let MIME_TYPE_JSON = "application/json"
     }
+    
+    struct UdacityAuth {
+        static let KEY_UDACITY = "udacity"
+        static let KEY_USERNAME = "username"
+        static let KEY_PASSWORD = "password"
+        
+        static let KEY_STATUS = "status"
+        static let KEY_ACCOUNT = "account"
+        static let KEY_ACC_KEY = "key"
+        static let KEY_SESSION = "session"
+        static let KEY_ID = "id"
+        static let KEY_EXPIRATION = "expiration"
+    }
 }

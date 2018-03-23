@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var launchLogo: UIImageView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var emailTextField: UITextField!
@@ -26,7 +27,14 @@ class LoginViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
-        setViewState(ViewState.IDLE)
+        setViewState(ViewState.LOADING)
+        // The initial view is set for auto login
+        // Start auto login
+        AuthHandler.shared.tryAutoLogin({error in
+            DispatchQueue.main.async(execute: {
+                self.onLoginResult(error: error)
+            })
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,25 +56,30 @@ class LoginViewController: UIViewController {
         }
         
         setViewState(ViewState.LOADING)
-        AuthHandler.shared.makeLoginCall(email: email, password: password, onComplete: {error, response in
+        AuthHandler.shared.makeLoginCall(email: email, password: password, onComplete: {error in
             DispatchQueue.main.async(execute: {
-                self.setViewState(ViewState.IDLE)
-                self.onLoginResult(error: error, response: response)
-                self.setViewState(ViewState.IDLE)
+                self.onLoginResult(error: error)
             })
         })
     }
     
-    func onLoginResult(error: Error?, response: UdacityAuthResponse?) {
-        if error != nil {
-            // TODO Show appropriate alert
-            showAlertDialog(title: "Error", message: (error?.localizedDescription)!, dismissHandler: nil)
+    func onLoginResult(error: Errors?) {
+        if error == nil {
+            onLoginSuccess()
             return
         }
         
-        // Process response
+        if error! == Errors.CredentialExpiredError {
+            // TODO Show login view/ IDLE state
+            setViewState(ViewState.IDLE)
+            return
+        }
         
-        
+        showAlertDialog(title: "Error", message: (error)!.rawValue, dismissHandler: nil)
+        setViewState(ViewState.IDLE)
+    }
+    
+    func onLoginSuccess() {
         // Start Home Screen
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") {
             present(viewController, animated: true, completion: nil)

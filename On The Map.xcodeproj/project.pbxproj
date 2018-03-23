@@ -20,6 +20,8 @@
 		5057C3B320509DC600F988E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5057C3B120509DC600F988E0 /* LaunchScreen.storyboard */; };
 		506DEF8F206158B90001F4C4 /* TableViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DEF8E206158B90001F4C4 /* TableViewController+TableViewDelegate.swift */; };
 		506DEF912062B0C50001F4C4 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DEF902062B0C50001F4C4 /* Errors.swift */; };
+		5072460D2064D6AB003EDB81 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5072460C2064D6AB003EDB81 /* Storage.swift */; };
+		5072460F2064E71F003EDB81 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5072460E2064E71F003EDB81 /* Cache.swift */; };
 		50C36F0C205C74B300A522AA /* LoginViewController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F0B205C74B300A522AA /* LoginViewController+Extras.swift */; };
 		50C36F1E205EE67900A522AA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F1D205EE67900A522AA /* TableViewController.swift */; };
 		50C36F20205EE68C00A522AA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F1F205EE68C00A522AA /* MapViewController.swift */; };
@@ -41,6 +43,8 @@
 		5057C3B420509DC600F988E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		506DEF8E206158B90001F4C4 /* TableViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		506DEF902062B0C50001F4C4 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		5072460C2064D6AB003EDB81 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		5072460E2064E71F003EDB81 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		50C36F0B205C74B300A522AA /* LoginViewController+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Extras.swift"; sourceTree = "<group>"; };
 		50C36F1D205EE67900A522AA /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		50C36F1F205EE68C00A522AA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 		5057C3A720509DC600F988E0 /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
+				5072460B2064D694003EDB81 /* Storage */,
 				50139965206003C000218970 /* Api */,
 				5013996D20601BAB00218970 /* Model */,
 				50C36F1C205EE62500A522AA /* Login */,
@@ -116,6 +121,15 @@
 				5057C3B420509DC600F988E0 /* Info.plist */,
 			);
 			path = "On The Map";
+			sourceTree = "<group>";
+		};
+		5072460B2064D694003EDB81 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				5072460C2064D6AB003EDB81 /* Storage.swift */,
+				5072460E2064E71F003EDB81 /* Cache.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		50C36F19205EE60500A522AA /* Home */ = {
@@ -227,6 +241,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5057C3AB20509DC600F988E0 /* LoginViewController.swift in Sources */,
+				5072460F2064E71F003EDB81 /* Cache.swift in Sources */,
+				5072460D2064D6AB003EDB81 /* Storage.swift in Sources */,
 				50139969206003E100218970 /* AuthHandler.swift in Sources */,
 				506DEF8F206158B90001F4C4 /* TableViewController+TableViewDelegate.swift in Sources */,
 				50C36F0C205C74B300A522AA /* LoginViewController+Extras.swift in Sources */,

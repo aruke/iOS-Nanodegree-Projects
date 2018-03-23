@@ -8,28 +8,10 @@
 
 import Foundation
 
-class AuthError: Error {
-    
-    var message: String
-    
-    init(message: String) {
-        self.message = message
-    }
-    
-    var localizedDescription: String {
-        return message
-    }
-}
-
-class UnknownError: Error {
-    
-    var message: String
-    
-    init(message: String) {
-        self.message = message
-    }
-    
-    var localizedDescription: String {
-        return message
-    }
+enum Errors: String {
+    case WrongCredentialError = "Account not found or invalid credentials."
+    case CredentialExpiredError = "Login expired. Please login again."
+    case NetworkError = "Please check your network and try again."
+    case ServerError = "Server messed up. Please contact developer."
+    case UnknownError = "The app is messed up. Please contact developer."
 }
