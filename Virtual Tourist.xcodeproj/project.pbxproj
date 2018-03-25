@@ -13,6 +13,8 @@
 		50C125B82063F15B0046BF84 /* Virtual_Tourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50C125B62063F15B0046BF84 /* Virtual_Tourist.xcdatamodeld */; };
 		50C125BA2063F15B0046BF84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C125B92063F15B0046BF84 /* Assets.xcassets */; };
 		50C125BD2063F15B0046BF84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C125BB2063F15B0046BF84 /* LaunchScreen.storyboard */; };
+		50E2761B20683ECF00A1214A /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50E2761920683ECB00A1214A /* Raleway-Light.ttf */; };
+		50E2761C20683ED200A1214A /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50E2761A20683ECD00A1214A /* Raleway-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		50C125B92063F15B0046BF84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50C125BC2063F15B0046BF84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50C125BE2063F15B0046BF84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50E2761920683ECB00A1214A /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.ttf"; sourceTree = "<group>"; };
+		50E2761A20683ECD00A1214A /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		50C125AE2063F15B0046BF84 /* Virtual Tourist */ = {
 			isa = PBXGroup;
 			children = (
+				50E2761820683EC200A1214A /* Fonts */,
 				50C125AF2063F15B0046BF84 /* AppDelegate.swift */,
 				50C125B12063F15B0046BF84 /* ViewController.swift */,
 				50C125B32063F15B0046BF84 /* Main.storyboard */,
@@ -65,6 +70,15 @@
 				50C125B62063F15B0046BF84 /* Virtual_Tourist.xcdatamodeld */,
 			);
 			path = "Virtual Tourist";
+			sourceTree = "<group>";
+		};
+		50E2761820683EC200A1214A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				50E2761920683ECB00A1214A /* Raleway-Light.ttf */,
+				50E2761A20683ECD00A1214A /* Raleway-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +142,8 @@
 			files = (
 				50C125BD2063F15B0046BF84 /* LaunchScreen.storyboard in Resources */,
 				50C125BA2063F15B0046BF84 /* Assets.xcassets in Resources */,
+				50E2761C20683ED200A1214A /* Raleway-Regular.ttf in Resources */,
+				50E2761B20683ECF00A1214A /* Raleway-Light.ttf in Resources */,
 				50C125B52063F15B0046BF84 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
