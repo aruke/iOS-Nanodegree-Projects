@@ -36,7 +36,7 @@
 		5013996B206006CA00218970 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5013996E20601BC600218970 /* Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responses.swift; sourceTree = "<group>"; };
 		5020288A206038C60069E1C3 /* MapViewController+MapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapViewDelegate.swift"; sourceTree = "<group>"; };
-		5020288C206039A90069E1C3 /* ParseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParseHandler.swift; path = ../Api/ParseHandler.swift; sourceTree = "<group>"; };
+		5020288C206039A90069E1C3 /* ParseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParseHandler.swift; path = "On The Map/Api/ParseHandler.swift"; sourceTree = SOURCE_ROOT; };
 		5057C3A520509DC600F988E0 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5057C3A820509DC600F988E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5057C3AA20509DC600F988E0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -74,8 +74,7 @@
 				50139967206003E100218970 /* AuthHandler.swift */,
 				5020288C206039A90069E1C3 /* ParseHandler.swift */,
 			);
-			name = Api;
-			path = "New Group";
+			path = Api;
 			sourceTree = "<group>";
 		};
 		5013996A206006B200218970 /* Utils */ = {

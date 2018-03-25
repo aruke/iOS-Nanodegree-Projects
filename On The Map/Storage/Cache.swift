@@ -16,4 +16,9 @@ class Cache {
     var studentLocations: [StudentLocation]?
     
     private init() {}
+    
+    func clear() {
+        userInfo = nil
+        studentLocations = nil
+    }
 }

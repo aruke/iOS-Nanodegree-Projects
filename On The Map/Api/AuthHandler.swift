@@ -154,6 +154,9 @@ class AuthHandler: NSObject {
             let range = Range(5..<data!.count)
             let newData = data?.subdata(in: range) /* subset response data! */
             print(String(data: newData!, encoding: .utf8)!)
+            // Since logout on server is success, also clear local data
+            Cache.shared.clear()
+            UserAuthStorage.shared.clearUserAuth()
             onComplete(nil)
         }
         task.resume()
