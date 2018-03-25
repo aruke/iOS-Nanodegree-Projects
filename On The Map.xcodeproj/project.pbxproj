@@ -23,6 +23,8 @@
 		5072460D2064D6AB003EDB81 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5072460C2064D6AB003EDB81 /* Storage.swift */; };
 		5072460F2064E71F003EDB81 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5072460E2064E71F003EDB81 /* Cache.swift */; };
 		507246122065469E003EDB81 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507246112065469E003EDB81 /* AccountViewController.swift */; };
+		507246152065861B003EDB81 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507246142065861B003EDB81 /* AddLocationViewController.swift */; };
+		5072461720668F54003EDB81 /* AddProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5072461620668F54003EDB81 /* AddProfileViewController.swift */; };
 		50C36F0C205C74B300A522AA /* LoginViewController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F0B205C74B300A522AA /* LoginViewController+Extras.swift */; };
 		50C36F1E205EE67900A522AA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F1D205EE67900A522AA /* TableViewController.swift */; };
 		50C36F20205EE68C00A522AA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F1F205EE68C00A522AA /* MapViewController.swift */; };
@@ -47,6 +49,8 @@
 		5072460C2064D6AB003EDB81 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		5072460E2064E71F003EDB81 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		507246112065469E003EDB81 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		507246142065861B003EDB81 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		5072461620668F54003EDB81 /* AddProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileViewController.swift; sourceTree = "<group>"; };
 		50C36F0B205C74B300A522AA /* LoginViewController+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Extras.swift"; sourceTree = "<group>"; };
 		50C36F1D205EE67900A522AA /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		50C36F1F205EE68C00A522AA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				50C36F1C205EE62500A522AA /* Login */,
 				50C36F19205EE60500A522AA /* Home */,
 				5072461020654686003EDB81 /* Account */,
+				5072461320658192003EDB81 /* AddNew */,
 				5013996A206006B200218970 /* Utils */,
 				5057C3A820509DC600F988E0 /* AppDelegate.swift */,
 				5057C3AC20509DC600F988E0 /* Main.storyboard */,
@@ -141,6 +146,15 @@
 				507246112065469E003EDB81 /* AccountViewController.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		5072461320658192003EDB81 /* AddNew */ = {
+			isa = PBXGroup;
+			children = (
+				507246142065861B003EDB81 /* AddLocationViewController.swift */,
+				5072461620668F54003EDB81 /* AddProfileViewController.swift */,
+			);
+			path = AddNew;
 			sourceTree = "<group>";
 		};
 		50C36F19205EE60500A522AA /* Home */ = {
@@ -255,6 +269,7 @@
 				5072460F2064E71F003EDB81 /* Cache.swift in Sources */,
 				507246122065469E003EDB81 /* AccountViewController.swift in Sources */,
 				5072460D2064D6AB003EDB81 /* Storage.swift in Sources */,
+				5072461720668F54003EDB81 /* AddProfileViewController.swift in Sources */,
 				50139969206003E100218970 /* AuthHandler.swift in Sources */,
 				506DEF8F206158B90001F4C4 /* TableViewController+TableViewDelegate.swift in Sources */,
 				50C36F0C205C74B300A522AA /* LoginViewController+Extras.swift in Sources */,
@@ -265,6 +280,7 @@
 				50139968206003E100218970 /* ApiConstants.swift in Sources */,
 				5020288B206038C60069E1C3 /* MapViewController+MapViewDelegate.swift in Sources */,
 				5057C3A920509DC600F988E0 /* AppDelegate.swift in Sources */,
+				507246152065861B003EDB81 /* AddLocationViewController.swift in Sources */,
 				50C36F20205EE68C00A522AA /* MapViewController.swift in Sources */,
 				50C36F1E205EE67900A522AA /* TableViewController.swift in Sources */,
 			);
