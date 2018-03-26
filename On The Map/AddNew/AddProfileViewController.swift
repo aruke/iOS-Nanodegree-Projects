@@ -42,20 +42,26 @@ class AddProfileViewController: UIViewController, UITextFieldDelegate {
     @IBAction func addPinButtonClick(_ sender: Any) {
         let mediaUrl = profileLinkInput.text
         ParseHandler.shared.postStudentLocation(locationString: locationString!, mediaUrl: mediaUrl!, lat: lat!, lng: lng!, onComplete: {error in
-            if error != nil {
-                self.showAlertDialog(title: "Error", message: (error)!.rawValue, dismissHandler: nil)
-                return
+            DispatchQueue.main.async {
+                if error != nil {
+                    self.showAlertDialog(title: "Error", message: (error)!.rawValue, dismissHandler: nil)
+                    return
+                }
+                self.showAlertDialog(title: "Location Posted", message: "Now other students can see where you are studying.", dismissHandler: { _ in
+                    self.navigationController?.popToRootViewController(animated: true)
+                })
             }
-            
-            
-            
-            
-            
         })
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         addPinButton.isEnabled = ((profileLinkInput.text?.count ?? 0) > 0)
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        addPinButton.isEnabled = ((profileLinkInput.text?.count ?? 0) > 0)
+        profileLinkInput.resignFirstResponder()
         return true
     }
 }

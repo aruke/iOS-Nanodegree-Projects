@@ -17,8 +17,6 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var findOnMapButton: UIButton!
     
-    var rootYPosition: CGFloat!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -83,18 +81,19 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     func initView() {
         locationStringInput.delegate = self
         indicatorView.isHidden = true
-        rootYPosition = rootContainer.frame.origin.y
         findOnMapButton.isEnabled = false
     }
     
     func startLoading() {
         indicatorView.isHidden = false
+        indicatorView.startAnimating()
         findOnMapButton.isEnabled = false
         locationStringInput.isEnabled = false
         locationStringInput.resignFirstResponder()
     }
     
     func stopLoading() {
+        indicatorView.stopAnimating()
         indicatorView.isHidden = true
         findOnMapButton.isEnabled = true
         locationStringInput.isEnabled = true
@@ -103,6 +102,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     // MARK: TextViewDelegate Methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        findOnMapButton.isEnabled = (textField.text?.count ?? 0 > 0)
         textField.resignFirstResponder()
         return true
     }
@@ -140,14 +140,16 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
         }
         
         UIView.animate(withDuration: 0.3, animations: {
-            self.rootContainer.frame.origin.y = self.rootYPosition - offset
+            //self.rootContainer.frame.origin.y = self.rootYPosition - offset
+            self.view.frame.origin.y = -offset
         })
     }
     
     @objc func keyboardWillHide(_ notification:Notification) {
         // Reset the view to it's original position
         UIView.animate(withDuration: 0.3, animations: {
-            self.rootContainer.frame.origin.y = self.rootYPosition
+            //self.rootContainer.frame.origin.y = self.rootYPosition
+            self.view.frame.origin.y = 0
         })
     }
     
