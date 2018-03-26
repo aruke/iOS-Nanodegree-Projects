@@ -10,7 +10,6 @@
 		50139968206003E100218970 /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50139966206003E100218970 /* ApiConstants.swift */; };
 		50139969206003E100218970 /* AuthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50139967206003E100218970 /* AuthHandler.swift */; };
 		5013996C206006CA00218970 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5013996B206006CA00218970 /* Extensions.swift */; };
-		5013996F20601BC600218970 /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5013996E20601BC600218970 /* Responses.swift */; };
 		5020288B206038C60069E1C3 /* MapViewController+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020288A206038C60069E1C3 /* MapViewController+MapViewDelegate.swift */; };
 		5020288D206039A90069E1C3 /* ParseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020288C206039A90069E1C3 /* ParseHandler.swift */; };
 		5057C3A920509DC600F988E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057C3A820509DC600F988E0 /* AppDelegate.swift */; };
@@ -28,13 +27,15 @@
 		50C36F0C205C74B300A522AA /* LoginViewController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F0B205C74B300A522AA /* LoginViewController+Extras.swift */; };
 		50C36F1E205EE67900A522AA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F1D205EE67900A522AA /* TableViewController.swift */; };
 		50C36F20205EE68C00A522AA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C36F1F205EE68C00A522AA /* MapViewController.swift */; };
+		50E2760F206826D600A1214A /* UdacityAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2760E206826D600A1214A /* UdacityAuthResponse.swift */; };
+		50E276112068270B00A1214A /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E276102068270B00A1214A /* UserInfo.swift */; };
+		50E276132068273700A1214A /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E276122068273700A1214A /* StudentLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		50139966206003E100218970 /* ApiConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiConstants.swift; path = "On The Map/Api/ApiConstants.swift"; sourceTree = SOURCE_ROOT; };
 		50139967206003E100218970 /* AuthHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthHandler.swift; path = "On The Map/Api/AuthHandler.swift"; sourceTree = SOURCE_ROOT; };
 		5013996B206006CA00218970 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		5013996E20601BC600218970 /* Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responses.swift; sourceTree = "<group>"; };
 		5020288A206038C60069E1C3 /* MapViewController+MapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapViewDelegate.swift"; sourceTree = "<group>"; };
 		5020288C206039A90069E1C3 /* ParseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParseHandler.swift; path = "On The Map/Api/ParseHandler.swift"; sourceTree = SOURCE_ROOT; };
 		5057C3A520509DC600F988E0 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +55,9 @@
 		50C36F0B205C74B300A522AA /* LoginViewController+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Extras.swift"; sourceTree = "<group>"; };
 		50C36F1D205EE67900A522AA /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		50C36F1F205EE68C00A522AA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		50E2760E206826D600A1214A /* UdacityAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityAuthResponse.swift; sourceTree = "<group>"; };
+		50E276102068270B00A1214A /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		50E276122068273700A1214A /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +93,9 @@
 		5013996D20601BAB00218970 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5013996E20601BC600218970 /* Responses.swift */,
+				50E276102068270B00A1214A /* UserInfo.swift */,
+				50E276122068273700A1214A /* StudentLocation.swift */,
+				50E2760D206826AD00A1214A /* Response */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -192,6 +198,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		50E2760D206826AD00A1214A /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				50E2760E206826D600A1214A /* UdacityAuthResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -272,13 +286,15 @@
 				50139969206003E100218970 /* AuthHandler.swift in Sources */,
 				506DEF8F206158B90001F4C4 /* TableViewController+TableViewDelegate.swift in Sources */,
 				50C36F0C205C74B300A522AA /* LoginViewController+Extras.swift in Sources */,
+				50E276112068270B00A1214A /* UserInfo.swift in Sources */,
+				50E276132068273700A1214A /* StudentLocation.swift in Sources */,
 				5013996C206006CA00218970 /* Extensions.swift in Sources */,
 				5020288D206039A90069E1C3 /* ParseHandler.swift in Sources */,
-				5013996F20601BC600218970 /* Responses.swift in Sources */,
 				506DEF912062B0C50001F4C4 /* Errors.swift in Sources */,
 				50139968206003E100218970 /* ApiConstants.swift in Sources */,
 				5020288B206038C60069E1C3 /* MapViewController+MapViewDelegate.swift in Sources */,
 				5057C3A920509DC600F988E0 /* AppDelegate.swift in Sources */,
+				50E2760F206826D600A1214A /* UdacityAuthResponse.swift in Sources */,
 				507246152065861B003EDB81 /* AddLocationViewController.swift in Sources */,
 				50C36F20205EE68C00A522AA /* MapViewController.swift in Sources */,
 				50C36F1E205EE67900A522AA /* TableViewController.swift in Sources */,

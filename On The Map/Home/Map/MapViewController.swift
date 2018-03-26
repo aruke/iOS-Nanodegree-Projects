@@ -32,12 +32,11 @@ class MapViewController: UIViewController {
             return
         }
         
+        // Set annotations on map
         var annotations = [MKPointAnnotation]()
-        
         for studentLocation in studentLocations! {
             annotations.append(studentLocation.annotation())
         }
-        
         self.mapView.addAnnotations(annotations)
     }
 }

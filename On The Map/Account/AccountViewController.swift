@@ -23,14 +23,18 @@ class AccountViewController: UIViewController {
         nicknameLabel.text = userInfo?.nickName
         nameLabel.text = "\(userInfo?.firstName ?? "") \(userInfo?.lastName ?? "")"
         
-        DispatchQueue.main.async {
+        DispatchQueue.global(qos: .background).async {
+            let image: UIImage
             do {
                 let url =  URL(string: "https:" + (userInfo?.imageUrl ?? ""))
                 let data = try Data(contentsOf: url!)
-                let image = UIImage(data: data)
-                self.userImage.image = image
+                image = UIImage(data: data)!
             } catch {
-                self.userImage.image = UIImage(named: "icon_world")
+                image = UIImage(named: "icon_world")!
+            }
+            
+            DispatchQueue.main.async {
+                self.userImage.image = image
             }
         }
     }

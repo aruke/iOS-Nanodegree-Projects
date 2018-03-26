@@ -12,10 +12,7 @@ import UIKit
 extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if studentLocations == nil {
-            return 0
-        }
-        return studentLocations.count
+        return studentLocations?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -23,8 +20,6 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellReuseIdentifier)
         cell?.textLabel?.text = "\(studentLocation.firstName) \(studentLocation.lastName)"
         cell?.detailTextLabel?.text = studentLocation.mapString
-        // TODO Load Student Image
-        //cell?.imageView?.image
         return cell!
     }
 }
