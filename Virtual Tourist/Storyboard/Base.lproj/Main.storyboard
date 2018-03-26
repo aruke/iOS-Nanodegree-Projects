@@ -1,28 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z6l-RT-1zN">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Travel Map View Controller-->
+        <!--Virtual Tourist-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TravelMapViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="TravelMapViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZIn-CS-BQr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZIn-CS-BQr" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0Qi-YT-gzY"/>
+                            <constraint firstItem="ZIn-CS-BQr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F7A-7w-QMA"/>
+                            <constraint firstItem="ZIn-CS-BQr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SXk-BA-yhJ"/>
+                            <constraint firstItem="ZIn-CS-BQr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gJL-Fj-lgO"/>
+                            <constraint firstItem="ZIn-CS-BQr" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vZW-YX-cR5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1Vg-oF-yKc"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Virtual Tourist" id="1Vg-oF-yKc">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" image="icon_edit" id="xp4-ix-Bxz">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="onEditClicked:" destination="BYZ-38-t0r" id="nSy-ba-Vcv"/>
+                                <segue destination="Zjf-xx-jWV" kind="show" id="JyE-1j-r5j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="Zjf-xx-jWV" kind="show" id="F8D-vB-z1E"/>
+                        <outlet property="editButton" destination="xp4-ix-Bxz" id="bCP-XJ-bW3"/>
+                        <outlet property="mapView" destination="ZIn-CS-BQr" id="R7D-mw-Dqa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -32,28 +55,97 @@
         <!--Photo Album View Controller-->
         <scene sceneID="YJx-MN-aPl">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Zjf-xx-jWV" customClass="PhotoAlbumViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Zjf-xx-jWV" customClass="PhotoAlbumViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mlq-P3-KLm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="p82-kq-j6x">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZV-9e-c0j">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="179.33333333333334"/>
+                                    </mapView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EQk-dR-Epc">
+                                        <rect key="frame" x="0.0" y="179.33333333333329" width="375" height="461.66666666666674"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Vx-LR-1mk">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kVp-zK-8cT">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PwY-1h-pV0" firstAttribute="bottom" secondItem="p82-kq-j6x" secondAttribute="bottom" id="D1a-ih-RI2"/>
+                            <constraint firstItem="p82-kq-j6x" firstAttribute="leading" secondItem="PwY-1h-pV0" secondAttribute="leading" id="sjm-Ae-Vm7"/>
+                            <constraint firstItem="PwY-1h-pV0" firstAttribute="trailing" secondItem="p82-kq-j6x" secondAttribute="trailing" id="toM-Yj-dIN"/>
+                            <constraint firstItem="p82-kq-j6x" firstAttribute="top" secondItem="PwY-1h-pV0" secondAttribute="top" id="u5V-LF-wN7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PwY-1h-pV0"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="UKz-Vu-7rj"/>
+                        <barButtonItem title="New Collection" id="uc3-tk-krW">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="onNewCollectionClicked:" destination="Zjf-xx-jWV" id="6Nf-R6-Rnd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="efc-0V-4bD"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="collectionView" destination="EQk-dR-Epc" id="1zy-eE-juZ"/>
+                        <outlet property="mapView" destination="1ZV-9e-c0j" id="0ae-Ch-n3X"/>
+                        <outlet property="newCollectionButton" destination="uc3-tk-krW" id="Ivt-aZ-PNL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MUY-CH-bW6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="133"/>
+            <point key="canvasLocation" x="1275" y="132.04225352112675"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aRo-Gh-X0o">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z6l-RT-1zN" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Z6l-RT-1zN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7OM-2T-EuS">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="7OM-2T-EuS">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="PrimaryColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" red="0.85474163290000005" green="0.8414755719" blue="0.82138330729999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="UK9-3O-XZ0">
+                        <rect key="frame" x="0.0" y="729" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="PrimaryColor"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Cfs-sT-s2L"/>
                     </connections>
@@ -63,4 +155,10 @@
             <point key="canvasLocation" x="-279" y="133"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_edit" width="24" height="24"/>
+        <namedColor name="PrimaryColor">
+            <color red="0.0" green="0.58799999952316284" blue="0.53299999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
