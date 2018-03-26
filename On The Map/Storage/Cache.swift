@@ -13,12 +13,14 @@ class Cache {
     static let shared = Cache()
     
     var userInfo: UserInfo?
-    var studentLocations: [StudentLocation]?
+    var studentLocations: [StudentLocation]
     
-    private init() {}
+    private init() {
+        studentLocations = [StudentLocation]()
+    }
     
     func clear() {
         userInfo = nil
-        studentLocations = nil
+        studentLocations.removeAll()
     }
 }

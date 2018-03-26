@@ -10,31 +10,24 @@ import Foundation
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: StudentLocationViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mapView.delegate = self
-        
-        ParseHandler.shared.loadStudentLocations(limit: 0, skip: 0, onComplete: {error , studentLocations in
-            DispatchQueue.main.async(execute: {
-                self.studentLocationLoaded(error: error, studentLocations: studentLocations)
-            })
-        })
     }
     
-    func studentLocationLoaded(error: Error?, studentLocations: [StudentLocation]?) {
+    override func studentLocationLoaded(error: Errors?) {
         if error != nil {
-            // TODO Show alert
+            showAlertDialog(title: "Error", message: (error)!.rawValue, dismissHandler: nil)
             return
         }
         
         // Set annotations on map
         var annotations = [MKPointAnnotation]()
-        for studentLocation in studentLocations! {
+        for studentLocation in Cache.shared.studentLocations {
             annotations.append(studentLocation.annotation())
         }
         self.mapView.addAnnotations(annotations)

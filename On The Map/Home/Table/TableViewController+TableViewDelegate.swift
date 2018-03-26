@@ -12,14 +12,21 @@ import UIKit
 extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentLocations?.count ?? 0
+        return Cache.shared.studentLocations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let studentLocation = studentLocations[indexPath.row]
+        let studentLocation = Cache.shared.studentLocations[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellReuseIdentifier)
         cell?.textLabel?.text = "\(studentLocation.firstName) \(studentLocation.lastName)"
         cell?.detailTextLabel?.text = studentLocation.mapString
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let studentLocation = Cache.shared.studentLocations[indexPath.row]
+        openUrl(url: studentLocation.mediaURL)
+        // Deselect the selected row
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

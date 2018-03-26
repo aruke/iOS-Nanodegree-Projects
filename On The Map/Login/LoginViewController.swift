@@ -64,19 +64,19 @@ class LoginViewController: UIViewController {
     }
     
     func onLoginResult(error: Errors?) {
+        setViewState(ViewState.IDLE)
+        
         if error == nil {
             onLoginSuccess()
             return
         }
         
+        // If credentials are expired, just show login view to re-authenticate
         if error! == Errors.CredentialExpiredError {
-            // TODO Show login view/ IDLE state
-            setViewState(ViewState.IDLE)
             return
         }
         
         showAlertDialog(title: "Error", message: (error)!.rawValue, dismissHandler: nil)
-        setViewState(ViewState.IDLE)
     }
     
     func onLoginSuccess() {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AuthHandler: NSObject {
+class AuthHandler: BaseNetworkHandler {
     
     private let AUTH_ENDPOINT_URL: URL = URL(string:"https://www.udacity.com/api/session")!
     private let USER_ENDPOINT_URL: URL = URL(string:"https://www.udacity.com/api/users")!
@@ -22,6 +22,7 @@ class AuthHandler: NSObject {
         // If no existing session, or if expired, return with credential expired error
         let authReponse = UserAuthStorage.shared.getStoredUserAuth() // Get from User Defaults
         if authReponse == nil || (authReponse?.isExpired())! {
+            print("No cached login. Forcing user to sign in again.")
             onComplete(Errors.CredentialExpiredError)
             return
         }
@@ -47,15 +48,7 @@ class AuthHandler: NSObject {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             // Handle network error here
             if error != nil {
-                if let urlError = error as? URLError {
-                    switch urlError.code {
-                    case .notConnectedToInternet:
-                        onComplete(Errors.NetworkError)
-                        break
-                    default:
-                        onComplete(Errors.ServerError)
-                    }
-                }
+                self.handleError(error: error, onComplete: onComplete)
                 return
             }
             
@@ -70,6 +63,8 @@ class AuthHandler: NSObject {
                 // Store user auth in storage and the call get user data
                 let authResponse = UdacityAuthResponse(responseDict)
                 UserAuthStorage.shared.storeUserAuth(authResponse)
+                
+                print("User Auth success. Getting User data.")
                 self.getUserData(authResponse: authResponse, onComplete: onComplete)
                 return
             } else if responseDict[ApiConstants.UdacityAuth.KEY_STATUS] != nil {
@@ -97,28 +92,22 @@ class AuthHandler: NSObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil {
-                if let urlError = error as? URLError {
-                    switch urlError.code {
-                    case .notConnectedToInternet:
-                        onComplete(Errors.NetworkError)
-                        break
-                    default:
-                        onComplete(Errors.ServerError)
-                    }
-                }
-                onComplete(Errors.ServerError)
+                self.handleError(error: error, onComplete: onComplete)
                 return
             }
             let range = Range(5..<data!.count)
             let newData = data?.subdata(in: range)
-            print(String(data: newData!, encoding: .utf8)!)
+            print("Get user data. Parsing data now")
             
             let responseDict = try! JSONSerialization.jsonObject(with: newData!, options: .allowFragments) as! NSDictionary
             
             let userInfo = UserInfo(responseDict)
-            Cache.shared.userInfo = userInfo
-            
-            onComplete(nil)
+            if userInfo.isValid() {
+                Cache.shared.userInfo = userInfo
+                onComplete(nil)
+            } else {
+                onComplete(Errors.ServerError)
+            }
         }
         
         task.resume()
@@ -139,24 +128,14 @@ class AuthHandler: NSObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil {
-                if let urlError = error as? URLError {
-                    switch urlError.code {
-                    case .notConnectedToInternet:
-                        onComplete(Errors.NetworkError)
-                        break
-                    default:
-                        onComplete(Errors.ServerError)
-                    }
-                }
-                onComplete(Errors.ServerError)
+                self.handleError(error: error, onComplete: onComplete)
                 return
             }
-            let range = Range(5..<data!.count)
-            let newData = data?.subdata(in: range) /* subset response data! */
-            print(String(data: newData!, encoding: .utf8)!)
+            print("Logout successful.")
             // Since logout on server is success, also clear local data
             Cache.shared.clear()
             UserAuthStorage.shared.clearUserAuth()
+            
             onComplete(nil)
         }
         task.resume()

@@ -41,7 +41,17 @@ class AddProfileViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func addPinButtonClick(_ sender: Any) {
         let mediaUrl = profileLinkInput.text
-        ParseHandler.shared.postStudentLocation(locationString: locationString!, mediaUrl: mediaUrl!, lat: lat!, lng: lng!)
+        ParseHandler.shared.postStudentLocation(locationString: locationString!, mediaUrl: mediaUrl!, lat: lat!, lng: lng!, onComplete: {error in
+            if error != nil {
+                self.showAlertDialog(title: "Error", message: (error)!.rawValue, dismissHandler: nil)
+                return
+            }
+            
+            
+            
+            
+            
+        })
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

@@ -31,12 +31,7 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
-            if let toOpen = view.annotation?.subtitle! {
-                // TODO: Use non-deprecated method
-                app.openURL(URL(string: toOpen)!)
-            }
+            openUrl(url: view.annotation?.subtitle!)
         }
     }
-    
 }

@@ -46,11 +46,8 @@ class AccountViewController: UIViewController {
                 return
             }
             
-            // Start Login Screen
-            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
-                self.present(viewController, animated: true, completion: nil)
-            }
-            
+            // Dismiss current view controller
+            self.tabBarController?.dismiss(animated: true, completion: nil)
         })
     }
 }

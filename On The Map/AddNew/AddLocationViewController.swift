@@ -14,15 +14,14 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var rootContainer: UIStackView!
     @IBOutlet weak var fieldContainer: UIStackView!
     @IBOutlet weak var locationStringInput: UITextField!
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var findOnMapButton: UIButton!
     
     var rootYPosition: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationStringInput.delegate = self
-        rootYPosition = rootContainer.frame.origin.y
-        findOnMapButton.isEnabled = false
+        initView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +39,8 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     
     private func searchLocation() {
         
+        startLoading()
+        
         let locationString = locationStringInput.text
         
         let request = MKLocalSearchRequest()
@@ -47,6 +48,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
         
         let search = MKLocalSearch(request: request)
         search.start { [weak self] (response, error) in
+            self?.stopLoading()
             if let array = response?.mapItems {
                 
                 let coordinates = array[0].placemark.coordinate
@@ -54,7 +56,9 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
                 
                 self?.showAddProfileViewController(locationString: title!, lat: coordinates.latitude, lng: coordinates.longitude)
             } else {
-                // TODO: Show Error
+                self?.showAlertDialog(title: "Oops!", message: "The location you are seaarching doesn't exist On The Map! Please try with detail addreess.", dismissHandler: { _ in
+                    
+                })
             }
         }
     }
@@ -72,6 +76,28 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+    }
+    
+    // MARK: View State Methods
+    
+    func initView() {
+        locationStringInput.delegate = self
+        indicatorView.isHidden = true
+        rootYPosition = rootContainer.frame.origin.y
+        findOnMapButton.isEnabled = false
+    }
+    
+    func startLoading() {
+        indicatorView.isHidden = false
+        findOnMapButton.isEnabled = false
+        locationStringInput.isEnabled = false
+        locationStringInput.resignFirstResponder()
+    }
+    
+    func stopLoading() {
+        indicatorView.isHidden = true
+        findOnMapButton.isEnabled = true
+        locationStringInput.isEnabled = true
     }
     
     // MARK: TextViewDelegate Methods
