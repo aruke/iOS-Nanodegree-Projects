@@ -15,7 +15,6 @@ class PhotoAlbumViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var newCollectionButton: UIBarButtonItem!
     
     var locationString: String!
     var locationCoordinates: CLLocationCoordinate2D!
@@ -38,7 +37,8 @@ class PhotoAlbumViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationController?.isToolbarHidden = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         // Set the camera for map
         mapView.centerCoordinate = locationCoordinates

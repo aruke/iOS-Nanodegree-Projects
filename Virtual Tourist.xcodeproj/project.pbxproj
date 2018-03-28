@@ -10,6 +10,7 @@
 		502B7C8D206B3F8C000CF965 /* TravelMapViewController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B7C8C206B3F8C000CF965 /* TravelMapViewController+Extras.swift */; };
 		502B7C92206B4481000CF965 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B7C91206B4481000CF965 /* Extensions.swift */; };
 		502B7C95206B7148000CF965 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B7C94206B7148000CF965 /* DataController.swift */; };
+		502B7C9B206B919E000CF965 /* PhotoAlbumViewController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B7C9A206B919E000CF965 /* PhotoAlbumViewController+Extras.swift */; };
 		505C13BE20693A53001B5E15 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C13BD20693A53001B5E15 /* PhotoAlbumViewController.swift */; };
 		505C13C2206AAFBA001B5E15 /* MapViewDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C13C1206AAFBA001B5E15 /* MapViewDefaults.swift */; };
 		50C125B02063F15B0046BF84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C125AF2063F15B0046BF84 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 		502B7C8C206B3F8C000CF965 /* TravelMapViewController+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TravelMapViewController+Extras.swift"; sourceTree = "<group>"; };
 		502B7C91206B4481000CF965 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		502B7C94206B7148000CF965 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		502B7C9A206B919E000CF965 /* PhotoAlbumViewController+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoAlbumViewController+Extras.swift"; sourceTree = "<group>"; };
 		505C13BD20693A53001B5E15 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		505C13C1206AAFBA001B5E15 /* MapViewDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDefaults.swift; sourceTree = "<group>"; };
 		50C125AC2063F15B0046BF84 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,24 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		502B7C98206B90E4000CF965 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				505C13BD20693A53001B5E15 /* PhotoAlbumViewController.swift */,
+				502B7C9A206B919E000CF965 /* PhotoAlbumViewController+Extras.swift */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		502B7C99206B90E7000CF965 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				50C125B12063F15B0046BF84 /* TravelMapViewController.swift */,
+				502B7C8C206B3F8C000CF965 /* TravelMapViewController+Extras.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		505C13BA2069391B001B5E15 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,9 +99,8 @@
 		505C13BB20693922001B5E15 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				50C125B12063F15B0046BF84 /* TravelMapViewController.swift */,
-				502B7C8C206B3F8C000CF965 /* TravelMapViewController+Extras.swift */,
-				505C13BD20693A53001B5E15 /* PhotoAlbumViewController.swift */,
+				502B7C99206B90E7000CF965 /* Map */,
+				502B7C98206B90E4000CF965 /* Album */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -210,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				502B7C9B206B919E000CF965 /* PhotoAlbumViewController+Extras.swift in Sources */,
 				502B7C8D206B3F8C000CF965 /* TravelMapViewController+Extras.swift in Sources */,
 				50C125B22063F15B0046BF84 /* TravelMapViewController.swift in Sources */,
 				50C125B82063F15B0046BF84 /* Virtual_Tourist.xcdatamodeld in Sources */,
