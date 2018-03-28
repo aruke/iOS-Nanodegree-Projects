@@ -35,14 +35,22 @@ extension TravelMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView {
-            // Open AlbumViewController
-            let annotation = view.annotation
-            let locationString = annotation?.title
-            let locationCoordinate = annotation?.coordinate
-            
-            let albumViewController = PhotoAlbumViewController.getInstance(caller: self, locationString: locationString!!, locationCoordinates: locationCoordinate!)
-            navigationController?.pushViewController(albumViewController, animated: true)
+        if control != view.rightCalloutAccessoryView {
+            return
         }
+        
+        if editModeOn {
+            // TODO Delete pin related to Place
+            
+            return
+        }
+        
+        // Open AlbumViewController
+        let annotation = view.annotation
+        let locationString = annotation?.title
+        let locationCoordinate = annotation?.coordinate
+        
+        let albumViewController = PhotoAlbumViewController.getInstance(caller: self, locationString: locationString!!, locationCoordinates: locationCoordinate!)
+        navigationController?.pushViewController(albumViewController, animated: true)
     }
 }

@@ -17,6 +17,8 @@ class TravelMapViewController: UIViewController {
     
     var dataController: DataController!
     
+    var editModeOn = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +36,12 @@ class TravelMapViewController: UIViewController {
                 mapView.addAnnotation(place.getAnnotation())
             }
         }
+        
+        // Set up toolbar
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let tapToDeleteButton = UIBarButtonItem(title: "Tap Pins to Delete", style: .plain, target: nil, action: nil)
+        tapToDeleteButton.tintColor = UIColor.white
+        toolbarItems = [spacer, tapToDeleteButton, spacer]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +51,17 @@ class TravelMapViewController: UIViewController {
     }
     
     @IBAction func onEditClicked(_ sender: Any) {
+        if editModeOn {
+            // End edit mode
+            editModeOn = false
+            editButton.image = UIImage(named: "icon_edit")
+            navigationController?.isToolbarHidden = true
+        } else {
+                // Show edit mode
+            editModeOn = true
+            editButton.image = UIImage(named: "icon_done")
+            navigationController?.isToolbarHidden = false
+        }
     }
     
     @objc func onLongPressed(sender: UILongPressGestureRecognizer) {

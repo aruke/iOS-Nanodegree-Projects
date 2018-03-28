@@ -38,7 +38,7 @@ class PhotoAlbumViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isToolbarHidden = false
+        //navigationController?.isToolbarHidden = false
         
         // Set the camera for map
         mapView.centerCoordinate = locationCoordinates
@@ -50,6 +50,39 @@ class PhotoAlbumViewController: UIViewController {
         
         // Set title
         title = locationString
+        
+        // Setup toolbar
+        navigationController?.toolbar.barTintColor = UIColor(named: "PrimaryColor")
+        
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        let deleteButton = UIBarButtonItem(image: UIImage(named: "icon_delete"), style: .plain, target: self, action: #selector(deleteImages))
+        deleteButton.tintColor = UIColor.white
+        
+        let refreshButton = UIBarButtonItem(image: UIImage(named: "icon_refresh"), style: .plain, target: self, action: #selector(refreshImageSet))
+        refreshButton.tintColor = UIColor.white
+        
+        setToolbarItems([spacer, deleteButton, spacer, refreshButton, spacer], animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Show toolbar
+        navigationController?.isToolbarHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Hide toolbar
+        navigationController?.isToolbarHidden = true
+    }
+    
+    @objc func refreshImageSet() {
+        
+    }
+    
+    @objc func deleteImages() {
+        
     }
 
     @IBAction func onNewCollectionClicked(_ sender: Any) {
