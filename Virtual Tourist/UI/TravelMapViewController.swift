@@ -43,13 +43,26 @@ class TravelMapViewController: UIViewController {
         // Get LocationCoordinates from touched point
         let touchPoint: CGPoint = sender.location(in: mapView)
         let touchCoordinates: CLLocationCoordinate2D = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+        let touchLocation = CLLocation(latitude: touchCoordinates.latitude, longitude: touchCoordinates.longitude)
         
-        // Create annotation
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = touchCoordinates
-        
-        // Add annotation to MapView
-        mapView.addAnnotation(annotation)
+        let geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(touchLocation){
+            [weak self] placemarks, error in
+            if let placemark = placemarks?.first {
+                // Create annotation
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = touchCoordinates
+                
+                annotation.title = "\(placemark.name ?? ""), \(placemark.locality ?? "")"
+                annotation.subtitle = "Tap to see album"
+                
+                // Add annotation to MapView
+                self?.mapView.addAnnotation(annotation)
+                
+            } else {
+                self?.showAlertDialog(title: "Error", message: "No address found for the dropped pin. Try pinning again.", dismissHandler: nil)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		502B7C8D206B3F8C000CF965 /* TravelMapViewController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B7C8C206B3F8C000CF965 /* TravelMapViewController+Extras.swift */; };
+		502B7C92206B4481000CF965 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B7C91206B4481000CF965 /* Extensions.swift */; };
 		505C13BE20693A53001B5E15 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C13BD20693A53001B5E15 /* PhotoAlbumViewController.swift */; };
 		505C13C2206AAFBA001B5E15 /* MapViewDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C13C1206AAFBA001B5E15 /* MapViewDefaults.swift */; };
 		50C125B02063F15B0046BF84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C125AF2063F15B0046BF84 /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		502B7C8C206B3F8C000CF965 /* TravelMapViewController+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TravelMapViewController+Extras.swift"; sourceTree = "<group>"; };
+		502B7C91206B4481000CF965 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		505C13BD20693A53001B5E15 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		505C13C1206AAFBA001B5E15 /* MapViewDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDefaults.swift; sourceTree = "<group>"; };
 		50C125AC2063F15B0046BF84 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		502B7C90206B446D000CF965 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				502B7C91206B4481000CF965 /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		505C13BA2069391B001B5E15 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +107,7 @@
 				505C13BA2069391B001B5E15 /* Model */,
 				50E2761820683EC200A1214A /* Fonts */,
 				505C13BB20693922001B5E15 /* UI */,
+				502B7C90206B446D000CF965 /* Utils */,
 				505C13BC2069395B001B5E15 /* Storyboard */,
 				50C125AF2063F15B0046BF84 /* AppDelegate.swift */,
 				50C125B92063F15B0046BF84 /* Assets.xcassets */,
@@ -194,6 +205,7 @@
 				50C125B02063F15B0046BF84 /* AppDelegate.swift in Sources */,
 				505C13C2206AAFBA001B5E15 /* MapViewDefaults.swift in Sources */,
 				505C13BE20693A53001B5E15 /* PhotoAlbumViewController.swift in Sources */,
+				502B7C92206B4481000CF965 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
