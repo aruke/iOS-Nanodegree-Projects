@@ -19,13 +19,7 @@ class PhotoAlbumViewController: UIViewController {
     var locationString: String!
     var locationCoordinates: CLLocationCoordinate2D!
     
-    /// Instantiates PhotoAlbumViewController with given parameters.
-    ///
-    /// - Parameters:
-    ///   - caller: Parent UIViewController
-    ///   - locationString: Location for Photo Album
-    ///   - locationCoordinates: Location Coordinates for Photo Album
-    /// - Returns: Instance of PhotoAlbumViewController
+    // Instantiates PhotoAlbumViewController with given parameters.
     class func getInstance(caller: UIViewController, locationString: String, locationCoordinates: CLLocationCoordinate2D) -> PhotoAlbumViewController {
         // Instantiate VC from storyboard
         let albumViewController: PhotoAlbumViewController = caller.storyboard?.instantiateViewController(withIdentifier: STORYBOARD_ID) as! PhotoAlbumViewController
@@ -58,9 +52,11 @@ class PhotoAlbumViewController: UIViewController {
         
         let deleteButton = UIBarButtonItem(image: UIImage(named: "icon_delete"), style: .plain, target: self, action: #selector(deleteImages))
         deleteButton.tintColor = UIColor.white
+        deleteButton.isEnabled = false
         
         let refreshButton = UIBarButtonItem(image: UIImage(named: "icon_refresh"), style: .plain, target: self, action: #selector(refreshImageSet))
         refreshButton.tintColor = UIColor.white
+        refreshButton.isEnabled = false
         
         setToolbarItems([spacer, deleteButton, spacer, refreshButton, spacer], animated: true)
     }
@@ -82,10 +78,6 @@ class PhotoAlbumViewController: UIViewController {
     }
     
     @objc func deleteImages() {
-        
-    }
-
-    @IBAction func onNewCollectionClicked(_ sender: Any) {
         
     }
 }

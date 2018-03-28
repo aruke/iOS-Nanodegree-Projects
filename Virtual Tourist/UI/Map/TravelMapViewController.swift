@@ -38,6 +38,7 @@ class TravelMapViewController: UIViewController {
         }
         
         // Set up toolbar
+        navigationController?.toolbar.barTintColor = UIColor(named: "PrimaryColor")
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let tapToDeleteButton = UIBarButtonItem(title: "Tap Pins to Delete", style: .plain, target: nil, action: nil)
         tapToDeleteButton.tintColor = UIColor.white
