@@ -13,6 +13,8 @@
 		502B7CBC20724FA8000CF965 /* JSON_Feed_Reader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 502B7CBA20724FA8000CF965 /* JSON_Feed_Reader.xcdatamodeld */; };
 		502B7CBE20724FA8000CF965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 502B7CBD20724FA8000CF965 /* Assets.xcassets */; };
 		502B7CC120724FA8000CF965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 502B7CBF20724FA8000CF965 /* LaunchScreen.storyboard */; };
+		502B7CCC20724FE6000CF965 /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B7CCB20724FE6000CF965 /* DataRepository.swift */; };
+		502B7CCF2072502A000CF965 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B7CCE2072502A000CF965 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		502B7CBD20724FA8000CF965 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		502B7CC020724FA8000CF965 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		502B7CC220724FA8000CF965 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		502B7CCB20724FE6000CF965 /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
+		502B7CCE2072502A000CF965 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,65 @@
 		502B7CB220724FA8000CF965 /* JSON Feed Reader */ = {
 			isa = PBXGroup;
 			children = (
+				502B7CC820724FB2000CF965 /* Data */,
+				502B7CC920724FB9000CF965 /* UI */,
+				502B7CCD20725018000CF965 /* Utils */,
+				502B7CD02072504D000CF965 /* Assets */,
+				502B7CD12072505D000CF965 /* Storyboard */,
 				502B7CB320724FA8000CF965 /* AppDelegate.swift */,
-				502B7CB520724FA8000CF965 /* ViewController.swift */,
-				502B7CB720724FA8000CF965 /* Main.storyboard */,
-				502B7CBD20724FA8000CF965 /* Assets.xcassets */,
-				502B7CBF20724FA8000CF965 /* LaunchScreen.storyboard */,
 				502B7CC220724FA8000CF965 /* Info.plist */,
-				502B7CBA20724FA8000CF965 /* JSON_Feed_Reader.xcdatamodeld */,
 			);
 			path = "JSON Feed Reader";
+			sourceTree = "<group>";
+		};
+		502B7CC820724FB2000CF965 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				502B7CCA20724FD5000CF965 /* Local */,
+				502B7CCB20724FE6000CF965 /* DataRepository.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		502B7CC920724FB9000CF965 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				502B7CB520724FA8000CF965 /* ViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		502B7CCA20724FD5000CF965 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				502B7CBA20724FA8000CF965 /* JSON_Feed_Reader.xcdatamodeld */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		502B7CCD20725018000CF965 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				502B7CCE2072502A000CF965 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		502B7CD02072504D000CF965 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				502B7CBD20724FA8000CF965 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		502B7CD12072505D000CF965 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				502B7CB720724FA8000CF965 /* Main.storyboard */,
+				502B7CBF20724FA8000CF965 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +193,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				502B7CCF2072502A000CF965 /* Constants.swift in Sources */,
 				502B7CB620724FA8000CF965 /* ViewController.swift in Sources */,
+				502B7CCC20724FE6000CF965 /* DataRepository.swift in Sources */,
 				502B7CB420724FA8000CF965 /* AppDelegate.swift in Sources */,
 				502B7CBC20724FA8000CF965 /* JSON_Feed_Reader.xcdatamodeld in Sources */,
 			);
