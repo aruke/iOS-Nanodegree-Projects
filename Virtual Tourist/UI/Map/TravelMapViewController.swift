@@ -12,6 +12,8 @@ import CoreData
 
 class TravelMapViewController: UIViewController {
 
+    let reuseId = "pin"
+    
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
     
@@ -63,6 +65,8 @@ class TravelMapViewController: UIViewController {
             editButton.image = UIImage(named: "icon_done")
             navigationController?.isToolbarHidden = false
         }
+        
+        refreshMapAnnoatation()
     }
     
     @objc func onLongPressed(sender: UILongPressGestureRecognizer) {

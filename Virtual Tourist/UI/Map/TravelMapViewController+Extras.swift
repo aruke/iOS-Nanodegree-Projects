@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import CoreData
 
 extension TravelMapViewController: MKMapViewDelegate {
     
@@ -20,18 +21,30 @@ extension TravelMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let reuseId = "pin"
+        
+        if !(annotation is MKPointAnnotation) {
+            return nil
+        }
+        
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            pinView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }  else {
             pinView!.annotation = annotation
         }
         
+        if editModeOn {
+        } else {
+        }
+        
         return pinView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("Annotation Seleacted")
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -39,18 +52,43 @@ extension TravelMapViewController: MKMapViewDelegate {
             return
         }
         
-        if editModeOn {
-            // TODO Delete pin related to Place
-            
-            return
-        }
-        
-        // Open AlbumViewController
+        // Get data form anntation
         let annotation = view.annotation
         let locationString = annotation?.title
         let locationCoordinate = annotation?.coordinate
         
-        let albumViewController = PhotoAlbumViewController.getInstance(caller: self, locationString: locationString!!, locationCoordinates: locationCoordinate!)
+        if editModeOn {
+            // Delete pin and Place
+            let fetchRequest: NSFetchRequest<Place> = Place.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "locationString = %@", locationString!!)
+            if let results = try? dataController.viewContext.fetch(fetchRequest) {
+                if results.count <= 0 {
+                    // No object found
+                    return
+                }
+                
+                let place = results[0]
+                dataController.viewContext.delete(place)
+                do {
+                    // If data is saved, create annotation and add to MapView
+                    try self.dataController.viewContext.save()
+                    mapView.removeAnnotation(annotation!)
+                } catch {
+                    // Show database error
+                    self.showAlertDialog(title: "Error", message: "Local database error.", dismissHandler: nil)
+                }
+                return
+            }
+        }
+        
+        // Open AlbumViewController
+        let albumViewController = PhotoAlbumViewController.getInstance(caller: self, dataController: dataController, locationString: locationString!!, locationCoordinates: locationCoordinate!)
         navigationController?.pushViewController(albumViewController, animated: true)
+    }
+    
+    func refreshMapAnnoatation() {
+        let annotations = mapView.annotations
+        mapView.removeAnnotations(annotations)
+        mapView.addAnnotations(annotations)
     }
 }

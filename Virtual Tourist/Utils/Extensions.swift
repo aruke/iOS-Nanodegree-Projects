@@ -25,8 +25,26 @@ extension Place {
         let annotation = MKPointAnnotation()
         annotation.title = self.locationString
         annotation.coordinate = CLLocationCoordinate2DMake(self.latitude, self.longitude)
-        annotation.subtitle = "Tap to see album"
         return annotation
     }
+}
+
+extension Photo {
     
+    convenience init?(_ dictionary: NSDictionary) {
+        self.init()
+        self.id = (dictionary["id"] as! String)
+        self.title = (dictionary["title"] as! String)
+        self.url = (dictionary["url_m"] as! String)
+        self.width = (dictionary["width_m"] as! Int16)
+        self.height = (dictionary["height_m"] as! Int16)
+    }
+    
+    func setFrom(_ dictionary: NSDictionary) {
+        self.id = (dictionary["id"] as! String)
+        self.title = (dictionary["title"] as! String)
+        self.url = (dictionary["url_m"] as? String) ?? ""
+        self.width = Int16(dictionary["width_m"] as? String ?? "0")!
+        self.height = Int16(dictionary["height_m"] as? String ?? "0")!
+    }
 }

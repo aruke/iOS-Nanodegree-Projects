@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class PhotoAlbumViewController: UIViewController {
     
@@ -15,15 +16,22 @@ class PhotoAlbumViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
+    var deleteButton: UIBarButtonItem!
+    var refreshButton: UIBarButtonItem!
+    
+    var dataController: DataController!
     var locationString: String!
     var locationCoordinates: CLLocationCoordinate2D!
+    var album: [Photo] = [Photo]()
     
     // Instantiates PhotoAlbumViewController with given parameters.
-    class func getInstance(caller: UIViewController, locationString: String, locationCoordinates: CLLocationCoordinate2D) -> PhotoAlbumViewController {
+    class func getInstance(caller: UIViewController, dataController: DataController, locationString: String, locationCoordinates: CLLocationCoordinate2D) -> PhotoAlbumViewController {
         // Instantiate VC from storyboard
         let albumViewController: PhotoAlbumViewController = caller.storyboard?.instantiateViewController(withIdentifier: STORYBOARD_ID) as! PhotoAlbumViewController
         // Set required parameters and return
+        albumViewController.dataController = dataController
         albumViewController.locationString = locationString
         albumViewController.locationCoordinates = locationCoordinates
         return albumViewController
@@ -45,16 +53,19 @@ class PhotoAlbumViewController: UIViewController {
         // Set title
         title = locationString
         
+        // Setup collection view controller
+        self.collectionView.register(UINib(nibName: "PhotoViewCell", bundle: nil), forCellWithReuseIdentifier: "PhotoViewCell")
+        
         // Setup toolbar
         navigationController?.toolbar.barTintColor = UIColor(named: "PrimaryColor")
         
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        let deleteButton = UIBarButtonItem(image: UIImage(named: "icon_delete"), style: .plain, target: self, action: #selector(deleteImages))
+        deleteButton = UIBarButtonItem(image: UIImage(named: "icon_delete"), style: .plain, target: self, action: #selector(deleteImages))
         deleteButton.tintColor = UIColor.white
         deleteButton.isEnabled = false
         
-        let refreshButton = UIBarButtonItem(image: UIImage(named: "icon_refresh"), style: .plain, target: self, action: #selector(refreshImageSet))
+        refreshButton = UIBarButtonItem(image: UIImage(named: "icon_refresh"), style: .plain, target: self, action: #selector(refreshImageSet))
         refreshButton.tintColor = UIColor.white
         refreshButton.isEnabled = false
         
@@ -65,6 +76,8 @@ class PhotoAlbumViewController: UIViewController {
         super.viewWillAppear(animated)
         // Show toolbar
         navigationController?.isToolbarHidden = false
+
+        refreshImageSet(true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -73,11 +86,63 @@ class PhotoAlbumViewController: UIViewController {
         navigationController?.isToolbarHidden = true
     }
     
-    @objc func refreshImageSet() {
-        
+    @objc func refreshImageSet(_ forcedRefresh: Bool = false) {
+        setViewState(.LOADING_IMAGES)
+        // Pass Context and Start loading images
+        FlickrApiHandler.shared.loadPhotos(context: dataController.viewContext, latitude: locationCoordinates.latitude, longitude: locationCoordinates.longitude, completion: {
+            // TODO: Handle error and show success case
+            DispatchQueue.main.async {
+                self.setViewState(.IDLE)
+                // Fetch data from database
+                let fetchRequest: NSFetchRequest<Photo> = Photo.fetchRequest()
+                if let results = try? self.dataController.viewContext.fetch(fetchRequest) {
+                    self.album.removeAll()
+                    self.album.append(contentsOf: results)
+                }
+                self.collectionView.reloadData()
+            }
+        })
     }
     
     @objc func deleteImages() {
         
+    }
+    
+    // MARK: View States
+    
+    enum ViewState {
+        case LOADING_IMAGES
+        case IDLE
+        case IMAGE_SELECTED
+    }
+    
+    func setViewState(_ viewState: ViewState) {
+        
+        switch viewState {
+        case .LOADING_IMAGES:
+            mapView.alpha = 0.5
+            collectionView.isHidden = true
+            indicatorView.isHidden = false
+            indicatorView.startAnimating()
+            deleteButton.isEnabled = false
+            refreshButton.isEnabled = false
+            break
+        case .IDLE:
+            mapView.alpha = 1.0
+            collectionView.isHidden = false
+            indicatorView.isHidden = true
+            indicatorView.stopAnimating()
+            deleteButton.isEnabled = false
+            refreshButton.isEnabled = true
+            break
+        case .IMAGE_SELECTED:
+            mapView.alpha = 1.0
+            collectionView.isHidden = false
+            indicatorView.isHidden = true
+            indicatorView.stopAnimating()
+            deleteButton.isEnabled = true
+            refreshButton.isEnabled = false
+            break
+        }
     }
 }
