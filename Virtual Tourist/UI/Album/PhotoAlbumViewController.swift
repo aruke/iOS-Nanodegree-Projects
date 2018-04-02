@@ -18,7 +18,6 @@ class PhotoAlbumViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
-    var deleteButton: UIBarButtonItem!
     var refreshButton: UIBarButtonItem!
     
     var dataController: DataController!
@@ -61,15 +60,11 @@ class PhotoAlbumViewController: UIViewController {
         
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        deleteButton = UIBarButtonItem(image: UIImage(named: "icon_delete"), style: .plain, target: self, action: #selector(deleteImages))
-        deleteButton.tintColor = UIColor.white
-        deleteButton.isEnabled = false
-        
         refreshButton = UIBarButtonItem(image: UIImage(named: "icon_refresh"), style: .plain, target: self, action: #selector(refreshImageSet))
         refreshButton.tintColor = UIColor.white
         refreshButton.isEnabled = false
         
-        setToolbarItems([spacer, deleteButton, spacer, refreshButton, spacer], animated: true)
+        setToolbarItems([spacer, refreshButton, spacer], animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,7 +108,6 @@ class PhotoAlbumViewController: UIViewController {
     enum ViewState {
         case LOADING_IMAGES
         case IDLE
-        case IMAGE_SELECTED
     }
     
     func setViewState(_ viewState: ViewState) {
@@ -124,7 +118,6 @@ class PhotoAlbumViewController: UIViewController {
             collectionView.isHidden = true
             indicatorView.isHidden = false
             indicatorView.startAnimating()
-            deleteButton.isEnabled = false
             refreshButton.isEnabled = false
             break
         case .IDLE:
@@ -132,16 +125,7 @@ class PhotoAlbumViewController: UIViewController {
             collectionView.isHidden = false
             indicatorView.isHidden = true
             indicatorView.stopAnimating()
-            deleteButton.isEnabled = false
             refreshButton.isEnabled = true
-            break
-        case .IMAGE_SELECTED:
-            mapView.alpha = 1.0
-            collectionView.isHidden = false
-            indicatorView.isHidden = true
-            indicatorView.stopAnimating()
-            deleteButton.isEnabled = true
-            refreshButton.isEnabled = false
             break
         }
     }
