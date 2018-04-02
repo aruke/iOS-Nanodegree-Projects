@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+class JsonFeedOrg {
+    static let WEBSITE = "https://jsonfeed.org/"
+    static let SPECIFICATIONS = "https://jsonfeed.org/version/1"
+}

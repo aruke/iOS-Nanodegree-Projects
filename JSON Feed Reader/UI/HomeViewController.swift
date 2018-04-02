@@ -12,11 +12,22 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func openWebsite(_ sender: UIButton) {
+        openUrl(url: JsonFeedOrg.WEBSITE)
+    }
+    
+    @IBAction func openSpecs(_ sender: UIButton) {
+        openUrl(url: JsonFeedOrg.SPECIFICATIONS)
+    }
+    
+    func openUrl(url: String?) {
+        if let url = URL(string: url!) {
+            let app = UIApplication.shared
+            app.open(url, options: [:], completionHandler: nil)
+        } else {
+            showAlertDialog(title: "Ooops!", message: "The URL is not a valid URL", dismissHandler: nil)
+        }
     }
 }

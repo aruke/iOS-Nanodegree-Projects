@@ -17,6 +17,7 @@
 		502B7CCF2072502A000CF965 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B7CCE2072502A000CF965 /* Constants.swift */; };
 		503861AA207254B200F94793 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503861A9207254B200F94793 /* FeedsViewController.swift */; };
 		503861AC2072585800F94793 /* FeedDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503861AB2072585800F94793 /* FeedDetailsViewController.swift */; };
+		503861AE2072749100F94793 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503861AD2072749100F94793 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		502B7CCE2072502A000CF965 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		503861A9207254B200F94793 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		503861AB2072585800F94793 /* FeedDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailsViewController.swift; sourceTree = "<group>"; };
+		503861AD2072749100F94793 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				502B7CCE2072502A000CF965 /* Constants.swift */,
+				503861AD2072749100F94793 /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				503861AA207254B200F94793 /* FeedsViewController.swift in Sources */,
 				502B7CCF2072502A000CF965 /* Constants.swift in Sources */,
 				502B7CB620724FA8000CF965 /* HomeViewController.swift in Sources */,
+				503861AE2072749100F94793 /* Extensions.swift in Sources */,
 				502B7CCC20724FE6000CF965 /* DataRepository.swift in Sources */,
 				503861AC2072585800F94793 /* FeedDetailsViewController.swift in Sources */,
 				502B7CB420724FA8000CF965 /* AppDelegate.swift in Sources */,
