@@ -95,9 +95,13 @@ class PhotoAlbumViewController: UIViewController {
     @objc func forceRefreshImageSet() {
         setViewState(.LOADING_IMAGES)
         // Pass Context and Start loading images
-        FlickrApiHandler.shared.loadPhotos(context: dataController.viewContext, place: place, completion: {
-            // TODO: Handle error and show success case
+        FlickrApiHandler.shared.loadPhotos(context: dataController.viewContext, place: place, completion: { error in
+            // Handle error and show success case
             DispatchQueue.main.async {
+                if error != nil {
+                    self.showAlertDialog(title: "Error", message: (error!.rawValue), dismissHandler: nil)
+                    return
+                }
                 self.setViewState(.IDLE)
                 self.refreshImageSet()
             }

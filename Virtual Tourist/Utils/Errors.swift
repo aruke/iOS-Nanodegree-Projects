@@ -11,5 +11,6 @@ import Foundation
 enum Errors: String {
     case NetworkError = "Please check your network and try again."
     case ServerError = "Server messed up. Please contact developer."
+    case DatabaseError = "Database Error."
     case UnknownError = "The app is messed up. Please contact developer."
 }
