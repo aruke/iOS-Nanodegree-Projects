@@ -1,5 +1,5 @@
 //
-//  DataRepository.swift
+//  LocalRepository.swift
 //  JSON Feed Reader
 //
 //  Created by Rajanikant Deshmukh on 02/04/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DataRepository: RepositoryProtocol {
+class LocalRepository: RepositoryProtocol {
     
     func loadPosts(feed: Feed, onError: (Errors) -> Void, onPostsLoaded: ([Post]) -> Void) {
         // TODO: Implement

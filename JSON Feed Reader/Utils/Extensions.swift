@@ -16,4 +16,8 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: dismissHandler))
         self.present(alert, animated: true)
     }
+    
+    func showErrorMessage(errorMessage: String) {
+        showAlertDialog(title: "Error", message: errorMessage, dismissHandler: nil)
+    }
 }
