@@ -22,6 +22,8 @@
 		503861B32072776200F94793 /* LocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503861B22072776200F94793 /* LocalRepository.swift */; };
 		503861B52072779900F94793 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503861B42072779900F94793 /* RepositoryProtocol.swift */; };
 		503861B72072927800F94793 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503861B62072927800F94793 /* DataController.swift */; };
+		503B54A72072CB4900FB503C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B54A62072CB4900FB503C /* BaseViewController.swift */; };
+		503B54A92072D3C500FB503C /* PrimaryFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B54A82072D3C500FB503C /* PrimaryFeed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		503861B22072776200F94793 /* LocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepository.swift; sourceTree = "<group>"; };
 		503861B42072779900F94793 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
 		503861B62072927800F94793 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		503B54A62072CB4900FB503C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		503B54A82072D3C500FB503C /* PrimaryFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryFeed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 				502B7CB520724FA8000CF965 /* HomeViewController.swift */,
 				503861A9207254B200F94793 /* PostsViewController.swift */,
 				503861AB2072585800F94793 /* PostContentViewController.swift */,
+				503B54A62072CB4900FB503C /* BaseViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 				502B7CBA20724FA8000CF965 /* JSON_Feed_Reader.xcdatamodeld */,
 				503861B22072776200F94793 /* LocalRepository.swift */,
 				503861B62072927800F94793 /* DataController.swift */,
+				503B54A82072D3C500FB503C /* PrimaryFeed.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -222,7 +228,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				503B54A72072CB4900FB503C /* BaseViewController.swift in Sources */,
 				503861AA207254B200F94793 /* PostsViewController.swift in Sources */,
+				503B54A92072D3C500FB503C /* PrimaryFeed.swift in Sources */,
 				503861B72072927800F94793 /* DataController.swift in Sources */,
 				502B7CCF2072502A000CF965 /* Constants.swift in Sources */,
 				502B7CB620724FA8000CF965 /* HomeViewController.swift in Sources */,

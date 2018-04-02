@@ -10,8 +10,8 @@ import Foundation
 
 class DataRepository: RepositoryProtocol {
     
-    let localRepository: LocalRepository
-    let remoteRepository: RemoteRepository
+    private let localRepository: LocalRepository
+    private let remoteRepository: RemoteRepository
     
     init(local: LocalRepository, remote: RemoteRepository) {
         self.localRepository = local
@@ -19,7 +19,7 @@ class DataRepository: RepositoryProtocol {
     }
     
     func loadPosts(feed: Feed, onError: @escaping ErrorCallback, onPostsLoaded: @escaping PostsCallback) {
-        self.localRepository.loadPosts(feed: feed,onError: {error in
+        self.localRepository.loadPosts(feed: feed, onError: {error in
             // Load content from remote
             self.remoteRepository.loadPosts(feed: feed, onError: onError
                 , onPostsLoaded: { posts in
@@ -39,5 +39,9 @@ class DataRepository: RepositoryProtocol {
         }, onContentLoaded: {content in
             onContentLoaded(content)
         })
+    }
+    
+    func getPrimaryFeed() -> Feed {
+        return Feed()
     }
 }

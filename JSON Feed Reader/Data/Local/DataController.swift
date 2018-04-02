@@ -34,6 +34,7 @@ class DataController {
 
             print("Persistance Store loaded successfully")
             self.isLoaded = true
+            PrimaryFeed.shared.insertIfDoNotExist(dataController: self)
             completion?()
         })
     }

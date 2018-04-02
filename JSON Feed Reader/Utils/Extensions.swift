@@ -17,7 +17,7 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
-    func showErrorMessage(errorMessage: String) {
-        showAlertDialog(title: "Error", message: errorMessage, dismissHandler: nil)
+    func showError(_ error: Errors) {
+        showAlertDialog(title: "Error", message: error.localizedDescription, dismissHandler: nil)
     }
 }
