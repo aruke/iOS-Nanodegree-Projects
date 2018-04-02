@@ -7,14 +7,38 @@
 //
 
 import Foundation
+import CoreData
 
 class LocalRepository: RepositoryProtocol {
     
-    func loadPosts(feed: Feed, onError: (Errors) -> Void, onPostsLoaded: ([Post]) -> Void) {
-        // TODO: Implement
+    var dataController: DataController
+    
+    init(dataController: DataController) {
+        self.dataController = dataController
     }
     
-    func loadContent(postId: String, onError: (Errors) -> Void, onContentLoaded: (String) -> Void) {
-        // TODO: Implement
+    func loadPosts(feed: Feed, onError: @escaping ErrorCallback, onPostsLoaded: @escaping PostsCallback) {
+        if !dataController.isLoaded {
+            onError(Errors.LocalDatabaseError)
+            return
+        }
+        
+        let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
+        do {
+            let results = try dataController.viewContext.fetch(fetchRequest)
+            print("Loaded posts from local db.")
+            onPostsLoaded(results)
+            return
+        } catch {
+            print("Fetch Error")
+            onError(Errors.LocalDatabaseError)
+        }
+    }
+    
+    func loadContent(postId: String, onError: @escaping ErrorCallback, onContentLoaded: @escaping ContentCallback) {
+        if !dataController.isLoaded {
+            onError(Errors.LocalDatabaseError)
+            return
+        }
     }
 }

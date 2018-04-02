@@ -1,5 +1,5 @@
 //
-//  FeedDetailsViewController.swift
+//  PostContentViewController.swift
 //  JSON Feed Reader
 //
 //  Created by Rajanikant Deshmukh on 02/04/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedDetailsViewController: UIViewController {
+class PostContentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

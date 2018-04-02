@@ -10,11 +10,34 @@ import Foundation
 
 class DataRepository: RepositoryProtocol {
     
-    func loadPosts(feed: Feed, onError: (Errors) -> Void, onPostsLoaded: ([Post]) -> Void) {
-        // TODO: Implement
+    let localRepository: LocalRepository
+    let remoteRepository: RemoteRepository
+    
+    init(local: LocalRepository, remote: RemoteRepository) {
+        self.localRepository = local
+        self.remoteRepository = remote
     }
     
-    func loadContent(postId: String, onError: (Errors) -> Void, onContentLoaded: (String) -> Void) {
-        // TODO: Implement
+    func loadPosts(feed: Feed, onError: @escaping ErrorCallback, onPostsLoaded: @escaping PostsCallback) {
+        self.localRepository.loadPosts(feed: feed,onError: {error in
+            // Load content from remote
+            self.remoteRepository.loadPosts(feed: feed, onError: onError
+                , onPostsLoaded: { posts in
+                onPostsLoaded(posts)
+            })
+        }, onPostsLoaded: {posts in
+            onPostsLoaded(posts)
+        })
+    }
+    
+    func loadContent(postId: String, onError: @escaping ErrorCallback, onContentLoaded: @escaping ContentCallback) {
+        self.localRepository.loadContent(postId: postId, onError: {error in
+            // Load content from remote
+            self.remoteRepository.loadContent(postId: postId, onError: onError, onContentLoaded: { content in
+                onContentLoaded(content)
+            })
+        }, onContentLoaded: {content in
+            onContentLoaded(content)
+        })
     }
 }

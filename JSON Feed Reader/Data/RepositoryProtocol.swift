@@ -16,7 +16,7 @@ protocol RepositoryProtocol {
     typealias PostCallback = ((Post) -> Void)
     typealias ContentCallback = ((String) -> Void)
     
-    func loadPosts(feed: Feed, onError: ErrorCallback, onPostsLoaded: PostsCallback)
+    func loadPosts(feed: Feed, onError: @escaping ErrorCallback, onPostsLoaded: @escaping PostsCallback)
     
-    func loadContent(postId: String, onError: ErrorCallback, onContentLoaded: ContentCallback)
+    func loadContent(postId: String, onError: @escaping ErrorCallback, onContentLoaded: @escaping ContentCallback)
 }

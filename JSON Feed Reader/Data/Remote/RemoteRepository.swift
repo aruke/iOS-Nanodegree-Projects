@@ -10,11 +10,13 @@ import Foundation
 
 class RemoteRepository: RepositoryProtocol {
     
-    func loadPosts(feed: Feed, onError: (Errors) -> Void, onPostsLoaded: ([Post]) -> Void) {
+    func loadPosts(feed: Feed, onError: @escaping ErrorCallback, onPostsLoaded: @escaping PostsCallback) {
         // TODO: Implement
+        onError(Errors.UnknownError)
     }
     
-    func loadContent(postId: String, onError: (Errors) -> Void, onContentLoaded: (String) -> Void) {
+    func loadContent(postId: String, onError: @escaping ErrorCallback, onContentLoaded: @escaping ContentCallback) {
         // TODO: Implement
+        onError(Errors.UnknownError)
     }
 }

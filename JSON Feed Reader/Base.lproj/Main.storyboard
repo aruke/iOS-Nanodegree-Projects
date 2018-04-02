@@ -135,23 +135,75 @@ So, they developed JSON Feed, a format similar to RSS and Atom but in JSON. It r
         <!--Feeds View Controller-->
         <scene sceneID="m1M-bf-Ts8">
             <objects>
-                <viewController id="Z2v-YM-eUa" userLabel="Feeds View Controller" customClass="FeedsViewController" customModule="JSON_Feed_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Z2v-YM-eUa" userLabel="Feeds View Controller" customClass="PostsViewController" customModule="JSON_Feed_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U10-3q-aXX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BXc-1T-uJS">
+                                <rect key="frame" x="177.66666666666666" y="398.66666666666669" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rlk-gN-Ifk">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SBm-KU-F1r">
+                                <rect key="frame" x="-0.66666666666665719" y="344" width="375" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab_feeds" translatesAutoresizingMaskIntoConstraints="NO" id="Sdn-pU-DyQ">
+                                        <rect key="frame" x="175.66666666666666" y="0.0" width="24" height="42.666666666666664"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="7Ud-HZ-C1Z"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5s-FW-2BU">
+                                        <rect key="frame" x="153.33333333333331" y="42.666666666666686" width="68.666666666666686" height="42.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74f-PZ-vAm">
+                                        <rect key="frame" x="161" y="85.333333333333314" width="53" height="42.666666666666657"/>
+                                        <state key="normal" title="Refresh"/>
+                                        <connections>
+                                            <action selector="refreshPosts:" destination="Z2v-YM-eUa" eventType="touchUpInside" id="vY0-TL-42e"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="RTZ-8A-Rbx"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SBm-KU-F1r" firstAttribute="width" secondItem="U10-3q-aXX" secondAttribute="width" id="2TO-4C-8Gx"/>
+                            <constraint firstItem="rlk-gN-Ifk" firstAttribute="leading" secondItem="3Dj-6F-n8a" secondAttribute="leading" id="2pW-3I-rpA"/>
+                            <constraint firstItem="SBm-KU-F1r" firstAttribute="centerY" secondItem="3Dj-6F-n8a" secondAttribute="centerY" id="AES-D0-8nS"/>
+                            <constraint firstItem="SBm-KU-F1r" firstAttribute="centerX" secondItem="3Dj-6F-n8a" secondAttribute="centerX" id="CK4-KB-2df"/>
+                            <constraint firstItem="3Dj-6F-n8a" firstAttribute="trailing" secondItem="rlk-gN-Ifk" secondAttribute="trailing" id="QLt-14-I6W"/>
+                            <constraint firstItem="rlk-gN-Ifk" firstAttribute="top" secondItem="3Dj-6F-n8a" secondAttribute="top" id="ad6-SK-KbY"/>
+                            <constraint firstItem="BXc-1T-uJS" firstAttribute="centerX" secondItem="3Dj-6F-n8a" secondAttribute="centerX" id="dzn-vj-a2t"/>
+                            <constraint firstItem="BXc-1T-uJS" firstAttribute="centerY" secondItem="3Dj-6F-n8a" secondAttribute="centerY" id="fdI-il-yao"/>
+                            <constraint firstItem="3Dj-6F-n8a" firstAttribute="bottom" secondItem="rlk-gN-Ifk" secondAttribute="bottom" id="rQe-kr-E8b"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3Dj-6F-n8a"/>
                     </view>
                     <navigationItem key="navigationItem" title="JSON Feed Reader" id="esj-gC-ejo"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="BXc-1T-uJS" id="4Mp-aE-d2d"/>
+                        <outlet property="emptyView" destination="SBm-KU-F1r" id="FVl-kq-vx3"/>
+                        <outlet property="tableView" destination="rlk-gN-Ifk" id="TnF-ZS-Xdr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVl-4a-r8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="801" y="601"/>
         </scene>
-        <!--Feed Details View Controller-->
+        <!--Post Content View Controller-->
         <scene sceneID="aWf-Yg-COl">
             <objects>
-                <viewController id="x6Y-pz-13C" customClass="FeedDetailsViewController" customModule="JSON_Feed_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="x6Y-pz-13C" customClass="PostContentViewController" customModule="JSON_Feed_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hSN-Dp-Im5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
