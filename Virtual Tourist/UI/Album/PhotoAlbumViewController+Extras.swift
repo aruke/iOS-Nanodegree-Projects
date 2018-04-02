@@ -18,7 +18,12 @@ extension PhotoAlbumViewController: UICollectionViewDelegate, UICollectionViewDa
         // Load Image
         let photo = album[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoViewCell", for: indexPath) as! PhotoViewCell
-        cell.setPhoto(photo)
+        cell.setPhoto(photo, onComplete: {
+            self.loadedImageCount! += 1
+            if self.loadedImageCount == self.album.count {
+                self.refreshButton.isEnabled = true
+            }
+        })
         return cell
     }
     

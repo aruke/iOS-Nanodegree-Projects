@@ -51,9 +51,11 @@ class FlickrApiHandler {
             let results = responseDict["photos"] as! NSDictionary
             let photoArray = results["photo"] as! [NSDictionary]
             print("\(photoArray.count) Photos downloaded")
+            place.photos = NSSet()
             for photoDictionary in photoArray {
                 let photo = Photo(context: context)
                 photo.setFrom(photoDictionary)
+                place.addToPhotos(photo)
             }
             
             // Save context, return to caller

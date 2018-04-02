@@ -18,14 +18,16 @@ class PhotoViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    func setPhoto(_ photo: Photo) {
+    func setPhoto(_ photo: Photo, onComplete: @escaping () -> Void) {
         if let data = photo.image {
             imageView.image = UIImage(data: data)
+            onComplete()
         } else {
             imageView.kf.setImage(with: URL(string: photo.url!), completionHandler: { (image, error, _, _) in
                 if let thisImage = image {
                     photo.image = UIImagePNGRepresentation(thisImage)
                 }
+                onComplete()
             })
         }
     }

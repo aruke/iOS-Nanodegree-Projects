@@ -23,6 +23,7 @@ class PhotoAlbumViewController: UIViewController {
     var dataController: DataController!
     var place: Place!
     var album: [Photo] = [Photo]()
+    var loadedImageCount: Int!
     
     let numberOfItems = 3
     let margin : CGFloat = 8
@@ -63,7 +64,7 @@ class PhotoAlbumViewController: UIViewController {
         
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        refreshButton = UIBarButtonItem(image: UIImage(named: "icon_refresh"), style: .plain, target: self, action: #selector(refreshImageSet))
+        refreshButton = UIBarButtonItem(image: UIImage(named: "icon_refresh"), style: .plain, target: self, action: #selector(forceRefreshImageSet))
         refreshButton.tintColor = UIColor.white
         refreshButton.isEnabled = false
         
@@ -74,7 +75,9 @@ class PhotoAlbumViewController: UIViewController {
         super.viewWillAppear(animated)
         // Show toolbar
         navigationController?.isToolbarHidden = false
-        refreshImageSet(false)
+        if !refreshImageSet() {
+            forceRefreshImageSet()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,44 +86,34 @@ class PhotoAlbumViewController: UIViewController {
         navigationController?.isToolbarHidden = true
         // Save data
         do {
-        try dataController.viewContext.save()
+            try dataController.viewContext.save()
         } catch {
             print("Data saving failed")
         }
     }
     
-    @objc func refreshImageSet(_ forcedRefresh: Bool = true) {
+    @objc func forceRefreshImageSet() {
         setViewState(.LOADING_IMAGES)
-        if !forcedRefresh {
-            // If not a forced refresh, load data from local database
-            let photoSet: NSSet? = place.photos
-            if photoSet != nil {
-                album.removeAll()
-                for photo in photoSet! {
-                    album.append(photo as! Photo)
-                }
-                self.collectionView.reloadData()
-                return
-            }
-        }
-        
-        // There is no data in database, try online
-        
-        
         // Pass Context and Start loading images
         FlickrApiHandler.shared.loadPhotos(context: dataController.viewContext, place: place, completion: {
             // TODO: Handle error and show success case
             DispatchQueue.main.async {
                 self.setViewState(.IDLE)
-                // Fetch data from database
-                let fetchRequest: NSFetchRequest<Photo> = Photo.fetchRequest()
-                if let results = try? self.dataController.viewContext.fetch(fetchRequest) {
-                    self.album.removeAll()
-                    self.album.append(contentsOf: results)
-                }
-                self.collectionView.reloadData()
+                self.refreshImageSet()
             }
         })
+    }
+    
+    func refreshImageSet() -> Bool {
+        let photoSet: NSSet? = place.photos
+        if photoSet != nil && photoSet?.count ?? 0 > 0 {
+            album = Array(photoSet!) as! [Photo]
+            loadedImageCount = 0
+            self.collectionView.reloadData()
+            self.setViewState(.IDLE)
+            return true
+        }
+        return false
     }
     
     // MARK: View States
@@ -145,7 +138,7 @@ class PhotoAlbumViewController: UIViewController {
             collectionView.isHidden = false
             indicatorView.isHidden = true
             indicatorView.stopAnimating()
-            refreshButton.isEnabled = true
+            refreshButton.isEnabled = false
             break
         }
     }
