@@ -21,18 +21,20 @@ class PhotoAlbumViewController: UIViewController {
     var refreshButton: UIBarButtonItem!
     
     var dataController: DataController!
-    var locationString: String!
-    var locationCoordinates: CLLocationCoordinate2D!
+    var place: Place!
     var album: [Photo] = [Photo]()
     
+    let numberOfItems = 3
+    let margin : CGFloat = 8
+    let internalSpacing : CGFloat = 4
+    
     // Instantiates PhotoAlbumViewController with given parameters.
-    class func getInstance(caller: UIViewController, dataController: DataController, locationString: String, locationCoordinates: CLLocationCoordinate2D) -> PhotoAlbumViewController {
+    class func getInstance(caller: UIViewController, dataController: DataController, place: Place) -> PhotoAlbumViewController {
         // Instantiate VC from storyboard
         let albumViewController: PhotoAlbumViewController = caller.storyboard?.instantiateViewController(withIdentifier: STORYBOARD_ID) as! PhotoAlbumViewController
         // Set required parameters and return
         albumViewController.dataController = dataController
-        albumViewController.locationString = locationString
-        albumViewController.locationCoordinates = locationCoordinates
+        albumViewController.place = place
         return albumViewController
     }
     
@@ -42,6 +44,7 @@ class PhotoAlbumViewController: UIViewController {
         collectionView.dataSource = self
         
         // Set the camera for map
+        let locationCoordinates = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
         mapView.centerCoordinate = locationCoordinates
         mapView.region = MKCoordinateRegion(center: locationCoordinates, span: MKCoordinateSpanMake(0.2, 0.2))
         // Add a Pin
@@ -50,7 +53,7 @@ class PhotoAlbumViewController: UIViewController {
         mapView.addAnnotation(annotation)
         
         // Set title
-        title = locationString
+        title = place.locationString
         
         // Setup collection view controller
         self.collectionView.register(UINib(nibName: "PhotoViewCell", bundle: nil), forCellWithReuseIdentifier: "PhotoViewCell")
@@ -71,20 +74,41 @@ class PhotoAlbumViewController: UIViewController {
         super.viewWillAppear(animated)
         // Show toolbar
         navigationController?.isToolbarHidden = false
-
-        refreshImageSet(true)
+        refreshImageSet(false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Hide toolbar
         navigationController?.isToolbarHidden = true
+        // Save data
+        do {
+        try dataController.viewContext.save()
+        } catch {
+            print("Data saving failed")
+        }
     }
     
-    @objc func refreshImageSet(_ forcedRefresh: Bool = false) {
+    @objc func refreshImageSet(_ forcedRefresh: Bool = true) {
         setViewState(.LOADING_IMAGES)
+        if !forcedRefresh {
+            // If not a forced refresh, load data from local database
+            let photoSet: NSSet? = place.photos
+            if photoSet != nil {
+                album.removeAll()
+                for photo in photoSet! {
+                    album.append(photo as! Photo)
+                }
+                self.collectionView.reloadData()
+                return
+            }
+        }
+        
+        // There is no data in database, try online
+        
+        
         // Pass Context and Start loading images
-        FlickrApiHandler.shared.loadPhotos(context: dataController.viewContext, latitude: locationCoordinates.latitude, longitude: locationCoordinates.longitude, completion: {
+        FlickrApiHandler.shared.loadPhotos(context: dataController.viewContext, place: place, completion: {
             // TODO: Handle error and show success case
             DispatchQueue.main.async {
                 self.setViewState(.IDLE)
@@ -97,10 +121,6 @@ class PhotoAlbumViewController: UIViewController {
                 self.collectionView.reloadData()
             }
         })
-    }
-    
-    @objc func deleteImages() {
-        
     }
     
     // MARK: View States

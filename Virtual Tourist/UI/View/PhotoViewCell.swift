@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PhotoViewCell: UICollectionViewCell {
     
@@ -15,6 +16,18 @@ class PhotoViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func setPhoto(_ photo: Photo) {
+        if let data = photo.image {
+            imageView.image = UIImage(data: data)
+        } else {
+            imageView.kf.setImage(with: URL(string: photo.url!), completionHandler: { (image, error, _, _) in
+                if let thisImage = image {
+                    photo.image = UIImagePNGRepresentation(thisImage)
+                }
+            })
+        }
     }
 
 }

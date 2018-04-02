@@ -34,6 +34,7 @@ class TravelMapViewController: UIViewController {
         // Fetch data from database
         let fetchRequest: NSFetchRequest<Place> = Place.fetchRequest()
         if let results = try? dataController.viewContext.fetch(fetchRequest) {
+            editButton.isEnabled = results.count > 0
             for place in results {
                 mapView.addAnnotation(place.getAnnotation())
             }
@@ -60,7 +61,7 @@ class TravelMapViewController: UIViewController {
             editButton.image = UIImage(named: "icon_edit")
             navigationController?.isToolbarHidden = true
         } else {
-                // Show edit mode
+            // Show edit mode
             editModeOn = true
             editButton.image = UIImage(named: "icon_done")
             navigationController?.isToolbarHidden = false
@@ -98,6 +99,12 @@ class TravelMapViewController: UIViewController {
                     // If data is saved, create annotation and add to MapView
                     try self!.dataController.viewContext.save()
                     self!.mapView.addAnnotation(place.getAnnotation())
+                    self!.editButton.isEnabled = true
+                    
+                    // Open AlbumViewController
+                    let albumViewController = PhotoAlbumViewController.getInstance(caller: self!, dataController: self!.dataController, place: place)
+                    self!.navigationController?.pushViewController(albumViewController, animated: true)
+                    
                 } catch {
                     // Show database error
                     self!.showAlertDialog(title: "Error", message: "Local database error.", dismissHandler: nil)

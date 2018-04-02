@@ -18,15 +18,17 @@ class FlickrApiHandler {
         "format" : "json",
         "extras": "url_m",
         "nojsoncallback" : 1,
-        "accuracy": 6
+        "accuracy": 6,
+        "per_page": 30
     ]
     
     static let shared = FlickrApiHandler()
     
     private init() {}
     
-    func loadPhotos(context: NSManagedObjectContext, latitude: Double, longitude: Double, completion: @escaping () -> Void) {
-        let requestUrl = generateUrl(latitude, longitude)
+    func loadPhotos(context: NSManagedObjectContext, place: Place, completion: @escaping () -> Void) {
+        
+        let requestUrl = generateUrl(place.latitude, place.longitude)
         let request = URLRequest(url: requestUrl)
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             

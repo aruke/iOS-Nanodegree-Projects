@@ -55,19 +55,10 @@ extension TravelMapViewController: MKMapViewDelegate {
         // Get data form anntation
         let annotation = view.annotation
         let locationString = annotation?.title
-        let locationCoordinate = annotation?.coordinate
         
         if editModeOn {
             // Delete pin and Place
-            let fetchRequest: NSFetchRequest<Place> = Place.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "locationString = %@", locationString!!)
-            if let results = try? dataController.viewContext.fetch(fetchRequest) {
-                if results.count <= 0 {
-                    // No object found
-                    return
-                }
-                
-                let place = results[0]
+            if let place = getPlace(locationString!!) {
                 dataController.viewContext.delete(place)
                 do {
                     // If data is saved, create annotation and add to MapView
@@ -82,12 +73,31 @@ extension TravelMapViewController: MKMapViewDelegate {
         }
         
         // Open AlbumViewController
-        let albumViewController = PhotoAlbumViewController.getInstance(caller: self, dataController: dataController, locationString: locationString!!, locationCoordinates: locationCoordinate!)
+        if let place = getPlace(locationString!!) {
+        let albumViewController = PhotoAlbumViewController.getInstance(caller: self, dataController: dataController, place: place)
         navigationController?.pushViewController(albumViewController, animated: true)
+        }
+    }
+    
+    private func getPlace(_ locationString: String) -> Place? {
+        let fetchRequest: NSFetchRequest<Place> = Place.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "locationString = %@", locationString)
+        if let results = try? dataController.viewContext.fetch(fetchRequest) {
+            if results.count <= 0 {
+                // No object found
+                return nil
+            }
+            
+            let place = results[0]
+            return place
+        }
+        
+        return nil
     }
     
     func refreshMapAnnoatation() {
         let annotations = mapView.annotations
+        editButton.isEnabled = annotations.count > 0
         mapView.removeAnnotations(annotations)
         mapView.addAnnotations(annotations)
     }
