@@ -79,7 +79,7 @@
         <scene sceneID="peK-KK-1B7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BSq-JI-WM7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="Aae-bU-VOH"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="tab_home" id="Aae-bU-VOH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IEO-81-3Jj">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -98,7 +98,7 @@
         <scene sceneID="u7D-Pi-c3j">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Kk-iC-5ps" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feeds" id="v0p-cq-a4f"/>
+                    <tabBarItem key="tabBarItem" title="Feeds" image="tab_feeds" id="v0p-cq-a4f"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CLn-ih-VQE">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -114,4 +114,8 @@
             <point key="canvasLocation" x="56" y="601.47783251231533"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab_feeds" width="24" height="24"/>
+        <image name="tab_home" width="24" height="24"/>
+    </resources>
 </document>
