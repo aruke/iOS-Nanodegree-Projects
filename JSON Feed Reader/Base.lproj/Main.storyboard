@@ -203,13 +203,46 @@ So, they developed JSON Feed, a format similar to RSS and Atom but in JSON. It r
         <!--Post Content View Controller-->
         <scene sceneID="aWf-Yg-COl">
             <objects>
-                <viewController id="x6Y-pz-13C" customClass="PostContentViewController" customModule="JSON_Feed_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostContentViewController" id="x6Y-pz-13C" customClass="PostContentViewController" customModule="JSON_Feed_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hSN-Dp-Im5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e5E-Aq-igR">
+                                <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                                <items>
+                                    <navigationItem title="Title" id="lFb-xL-Ueo">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="G4c-X3-6n4">
+                                            <connections>
+                                                <action selector="onDoneClick:" destination="x6Y-pz-13C" id="8xa-JC-Pl9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <webView contentMode="scaleToFill" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzS-GE-gxJ">
+                                <rect key="frame" x="0.0" y="140" width="375" height="638"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NzS-GE-gxJ" firstAttribute="bottom" secondItem="QjJ-wM-80H" secondAttribute="bottom" id="2EF-ir-AA4"/>
+                            <constraint firstItem="e5E-Aq-igR" firstAttribute="trailing" secondItem="QjJ-wM-80H" secondAttribute="trailing" id="7ki-cO-ke3"/>
+                            <constraint firstItem="NzS-GE-gxJ" firstAttribute="trailing" secondItem="QjJ-wM-80H" secondAttribute="trailing" id="Se2-G2-NdF"/>
+                            <constraint firstItem="e5E-Aq-igR" firstAttribute="leading" secondItem="QjJ-wM-80H" secondAttribute="leading" id="VKu-vB-cBc"/>
+                            <constraint firstItem="e5E-Aq-igR" firstAttribute="top" secondItem="QjJ-wM-80H" secondAttribute="top" id="X52-Ic-ctl"/>
+                            <constraint firstItem="NzS-GE-gxJ" firstAttribute="leading" secondItem="QjJ-wM-80H" secondAttribute="leading" id="pWR-ix-37V"/>
+                            <constraint firstItem="NzS-GE-gxJ" firstAttribute="top" secondItem="e5E-Aq-igR" secondAttribute="bottom" id="vX8-vC-nWP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QjJ-wM-80H"/>
                     </view>
+                    <connections>
+                        <outlet property="doneButton" destination="G4c-X3-6n4" id="9Eb-BN-1IP"/>
+                        <outlet property="navItem" destination="lFb-xL-Ueo" id="ciC-zY-XAw"/>
+                        <outlet property="webView" destination="NzS-GE-gxJ" id="3GT-5z-dOS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bs1-dy-T3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

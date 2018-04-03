@@ -46,7 +46,7 @@ class RemoteRepository: RepositoryProtocol {
     }
     
     func loadContent(postId: String, onError: @escaping ErrorCallback, onContentLoaded: @escaping ContentCallback) {
-        // TODO: Implement
+        // No need to implement in Remote
         onError(Errors.UnknownError)
     }
     

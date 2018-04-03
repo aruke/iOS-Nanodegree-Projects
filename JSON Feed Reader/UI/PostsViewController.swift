@@ -22,6 +22,8 @@ class PostsViewController: BaseViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.register(UINib(nibName: PostViewCell.POST_VIEW_CELL, bundle: nil), forCellReuseIdentifier: PostViewCell.POST_VIEW_CELL)
+        
         setViewState(.EMPTY)
     }
     
@@ -96,7 +98,11 @@ class PostsViewController: BaseViewController, UITableViewDelegate, UITableViewD
     // MARK: UITableViewDelegate Methods
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let post = posts?[indexPath.row] {
+            let contentViewContoller = PostContentViewController.instantiate(caller: self, post: post)
+            self.present(contentViewContoller, animated: true, completion: nil)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: UITableViewDataSource Methods
@@ -106,8 +112,15 @@ class PostsViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let post = posts![indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostViewCell.POST_VIEW_CELL, for: indexPath) as! PostViewCell
+        
+        cell.titleLabel.text = post.title
+        let dateString = UserFriendlyDateFormatter.format(dateToFormat: post.date_published!)
+        cell.dateLabel.text = "Published on \(dateString)"
+        // TODO: Get preview and display
+        cell.previewLabel.isHidden = true
+        
+        return cell
     }
-    
-    
 }
