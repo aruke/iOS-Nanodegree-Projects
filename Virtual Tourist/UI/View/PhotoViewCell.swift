@@ -23,7 +23,12 @@ class PhotoViewCell: UICollectionViewCell {
             imageView.image = UIImage(data: data)
             onComplete()
         } else {
-            imageView.kf.setImage(with: URL(string: photo.url!), completionHandler: { (image, error, _, _) in
+            imageView.kf.setImage(
+                with: URL(string: photo.url!),
+                placeholder: #imageLiteral(resourceName: "placeholder_image"),
+                options: nil,
+                progressBlock: nil,
+                completionHandler: { (image, error, _, _) in
                 if let thisImage = image {
                     photo.image = UIImagePNGRepresentation(thisImage)
                 }
