@@ -18,5 +18,6 @@ enum Errors: Error {
     case NetworkError
     case ServerError
     case LocalDatabaseError
+    case EmptyDatabaseError
     case UnknownError
 }

@@ -26,9 +26,11 @@ class LocalRepository: RepositoryProtocol {
         let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
         do {
             let results = try dataController.viewContext.fetch(fetchRequest)
-            print("Loaded posts from local db.")
+            print("Loaded posts from local db with count \(results.count)")
+            if results.count <= 0 {
+                throw Errors.EmptyDatabaseError
+            }
             onPostsLoaded(results)
-            return
         } catch {
             print("Fetch Error")
             onError(Errors.LocalDatabaseError)

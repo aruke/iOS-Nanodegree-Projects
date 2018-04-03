@@ -23,6 +23,10 @@ class PostsViewController: BaseViewController, UITableViewDelegate, UITableViewD
         tableView.dataSource = self
         
         setViewState(.EMPTY)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         refrshPosts()
     }
 
@@ -31,6 +35,7 @@ class PostsViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func refrshPosts() {
+        setViewState(.LOADING)
         
         // Only loading single feed, thus instantiating directly in ViewController
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -97,7 +102,7 @@ class PostsViewController: BaseViewController, UITableViewDelegate, UITableViewD
     // MARK: UITableViewDataSource Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 0
+            return posts?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

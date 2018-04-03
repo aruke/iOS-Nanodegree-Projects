@@ -19,29 +19,37 @@ class DataRepository: RepositoryProtocol {
     }
     
     func loadPosts(feed: Feed, onError: @escaping ErrorCallback, onPostsLoaded: @escaping PostsCallback) {
-        self.localRepository.loadPosts(feed: feed, onError: {error in
+        self.localRepository.loadPosts(feed: feed, onError: {
+            error in
             // Load content from remote
-            self.remoteRepository.loadPosts(feed: feed, onError: onError
-                , onPostsLoaded: { posts in
-                onPostsLoaded(posts)
+            self.remoteRepository.loadPosts(feed: feed, onError: {
+                error in
+                DispatchQueue.main.async { onError(error) }
+            }, onPostsLoaded: {
+                posts in
+                DispatchQueue.main.async { onPostsLoaded(posts) }
             })
-        }, onPostsLoaded: {posts in
-            onPostsLoaded(posts)
+        }, onPostsLoaded: {
+            posts in
+            DispatchQueue.main.async { onPostsLoaded(posts) }
         })
     }
     
     func loadContent(postId: String, onError: @escaping ErrorCallback, onContentLoaded: @escaping ContentCallback) {
-        self.localRepository.loadContent(postId: postId, onError: {error in
+        self.localRepository.loadContent(postId: postId, onError: {
+            error in
             // Load content from remote
-            self.remoteRepository.loadContent(postId: postId, onError: onError, onContentLoaded: { content in
-                onContentLoaded(content)
+            self.remoteRepository.loadContent(postId: postId, onError: {
+                error in
+                DispatchQueue.main.async { onError(error) }
+                
+            }, onContentLoaded: {
+                content in
+                DispatchQueue.main.async { onContentLoaded(content) }
             })
-        }, onContentLoaded: {content in
-            onContentLoaded(content)
+        }, onContentLoaded: {
+            content in
+            DispatchQueue.main.async { onContentLoaded(content) }
         })
-    }
-    
-    func getPrimaryFeed() -> Feed {
-        return Feed()
     }
 }

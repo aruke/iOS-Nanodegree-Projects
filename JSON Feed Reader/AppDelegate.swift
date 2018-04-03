@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dataController = DataController()
         dataController.load()
         let localRepository = LocalRepository(dataController: dataController)
-        let remoteRepository = RemoteRepository()
+        let remoteRepository = RemoteRepository(dataController: dataController)
         
         dataRepository = DataRepository(local: localRepository, remote: remoteRepository)
         
