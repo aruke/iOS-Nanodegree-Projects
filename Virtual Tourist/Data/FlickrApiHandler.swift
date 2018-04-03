@@ -27,8 +27,11 @@ class FlickrApiHandler {
     private init() {}
 
     func loadPhotos(context: NSManagedObjectContext, place: Place, completion: @escaping (Errors?) -> Void) {
+        
+        // Generate random page to locad new set of data
+        let randomePage = Int(arc4random_uniform(UInt32(place.pageCount)))
 
-        let requestUrl = generateUrl(place.latitude, place.longitude)
+        let requestUrl = generateUrl(place.latitude, place.longitude, page: Int16(randomePage))
         let request = URLRequest(url: requestUrl)
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
 
@@ -49,6 +52,10 @@ class FlickrApiHandler {
 
             // Get Photos Array
             let results = responseDict["photos"] as! NSDictionary
+            
+            let pages = results["pages"] as! Int16
+            place.pageCount = pages
+            
             let photoArray = results["photo"] as! [NSDictionary]
             print("\(photoArray.count) Photos downloaded")
             place.photos = NSSet()
@@ -81,10 +88,11 @@ class FlickrApiHandler {
         task.resume()
     }
 
-    private func generateUrl(_ latitude: Double, _ longitude: Double) -> URL {
+    private func generateUrl(_ latitude: Double, _ longitude: Double, page: Int16) -> URL {
         PARAMS.updateValue(latitude, forKey: "lat")
         PARAMS.updateValue(longitude, forKey: "lon")
-
+        PARAMS.updateValue(page, forKey: "page")
+        
         var queryItems = [URLQueryItem]()
         for item in PARAMS {
             queryItems.append(URLQueryItem(name: item.key, value: String(describing: item.value)))
