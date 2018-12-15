@@ -10,3 +10,6 @@
 [submodule "P4 VirtualTourist"]
 	path = P4 VirtualTourist
 	url = https://github.com/rajanikantdeshmukh/VirtualTourist
+[submodule "JSON-Feed-Reader"]
+	path = JSON-Feed-Reader
+	url = git@github.com:aruke/JSON-Feed-Reader.git
