@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vr8-mT-AE3">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" userLabel="Home View Controller" customClass="HomeViewController" customModule="JSON_Feed_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkF-Q2-V1I">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7RZ-dy-S0l">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="657"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="LEN-Nm-Hc5">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="657"/>
+                                                <subviews>
+                                                    <view opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezC-sW-k7D">
+                                                        <rect key="frame" x="187.66666666666666" y="0.0" width="0.0" height="16"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" id="BV2-sK-wiJ"/>
+                                                            <constraint firstAttribute="height" constant="16" id="f8a-01-Sh6"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="json-feed" translatesAutoresizingMaskIntoConstraints="NO" id="AQn-bD-Zcf">
+                                                        <rect key="frame" x="155.66666666666666" y="40" width="64" height="64"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="64" id="9jq-iq-1L8"/>
+                                                            <constraint firstAttribute="height" constant="64" id="hdQ-12-BTn"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Sc-eo-6aO">
+                                                        <rect key="frame" x="0.0" y="128" width="375" height="138"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ys-3I-ChZ" userLabel="Introduction">
+                                                                <rect key="frame" x="8" y="8" width="359" height="122"/>
+                                                                <string key="text">This app is a demo for new JSON Feed, A JSON based Spec for RSS or Atom Feeds. There are many websites and blogs supporting JSON Feed now, but for the sake of simplicity, the feeds are only fed from official JSON Feed blog.</string>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="0ys-3I-ChZ" firstAttribute="top" secondItem="6Sc-eo-6aO" secondAttribute="top" constant="8" id="87j-S7-QWN"/>
+                                                            <constraint firstAttribute="trailing" secondItem="0ys-3I-ChZ" secondAttribute="trailing" constant="8" id="IcX-Ap-0bo"/>
+                                                            <constraint firstItem="0ys-3I-ChZ" firstAttribute="leading" secondItem="6Sc-eo-6aO" secondAttribute="leading" constant="8" id="ZFT-ru-LR6"/>
+                                                            <constraint firstAttribute="bottom" secondItem="0ys-3I-ChZ" secondAttribute="bottom" constant="8" id="Zmv-z3-Nft"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ihj-x7-4UG">
+                                                        <rect key="frame" x="0.0" y="290" width="375" height="219"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqE-zX-gm0" userLabel="About Authors">
+                                                                <rect key="frame" x="8" y="8" width="359" height="203"/>
+                                                                <string key="text">Manton Reece and Brent Simmons had noticed that JSON had become the developers’ choice for APIs, and that developers often go out of their way to avoid XML. JSON is simpler to read and write, and it’s less prone to bugs.
+So, they developed JSON Feed, a format similar to RSS and Atom but in JSON. It reflects the lessons learned from our years of work reading and publishing feeds.</string>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="JqE-zX-gm0" secondAttribute="bottom" constant="8" id="8uE-UN-QQ3"/>
+                                                            <constraint firstItem="JqE-zX-gm0" firstAttribute="top" secondItem="Ihj-x7-4UG" secondAttribute="top" constant="8" id="Dt6-cn-eHJ"/>
+                                                            <constraint firstAttribute="trailing" secondItem="JqE-zX-gm0" secondAttribute="trailing" constant="8" id="jhZ-Cv-rge"/>
+                                                            <constraint firstItem="JqE-zX-gm0" firstAttribute="leading" secondItem="Ihj-x7-4UG" secondAttribute="leading" constant="8" id="zi2-zI-lXx"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sP-WX-e2H" userLabel="Website">
+                                                        <rect key="frame" x="116.66666666666669" y="533" width="142" height="30"/>
+                                                        <state key="normal" title="Visit Official Website"/>
+                                                        <connections>
+                                                            <action selector="openWebsite:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gvy-Ug-0jo"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzy-tx-aDI" userLabel="Specs">
+                                                        <rect key="frame" x="133.66666666666666" y="587" width="108" height="30"/>
+                                                        <state key="normal" title="Read the Specs"/>
+                                                        <connections>
+                                                            <action selector="openSpecs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zuQ-dI-Ecd"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbr-aE-3F2">
+                                                        <rect key="frame" x="187.66666666666666" y="641" width="0.0" height="16"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="Jqf-ub-U3D"/>
+                                                            <constraint firstAttribute="width" id="aJO-Nu-03X"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="7RZ-dy-S0l" firstAttribute="top" secondItem="CkF-Q2-V1I" secondAttribute="top" id="8Ha-ie-auM"/>
+                                    <constraint firstItem="7RZ-dy-S0l" firstAttribute="leading" secondItem="CkF-Q2-V1I" secondAttribute="leading" id="96I-b8-zg5"/>
+                                    <constraint firstAttribute="bottom" secondItem="7RZ-dy-S0l" secondAttribute="bottom" id="F9h-Zf-AZK"/>
+                                    <constraint firstAttribute="trailing" secondItem="7RZ-dy-S0l" secondAttribute="trailing" id="jW4-LL-H5Y"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="CkF-Q2-V1I" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="9vU-uo-vDm"/>
+                            <constraint firstItem="CkF-Q2-V1I" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LfB-7c-zWz"/>
+                            <constraint firstItem="CkF-Q2-V1I" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="elo-9Q-PO0"/>
+                            <constraint firstItem="7RZ-dy-S0l" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="l2d-ci-vYN"/>
+                            <constraint firstItem="CkF-Q2-V1I" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yLn-n6-FwY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="JSON Feed Reader" id="kZC-IM-1Qt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="-95"/>
+        </scene>
+        <!--Feeds View Controller-->
+        <scene sceneID="m1M-bf-Ts8">
+            <objects>
+                <viewController id="Z2v-YM-eUa" userLabel="Feeds View Controller" customClass="PostsViewController" customModule="JSON_Feed_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U10-3q-aXX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BXc-1T-uJS">
+                                <rect key="frame" x="177.66666666666666" y="398.66666666666669" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rlk-gN-Ifk">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SBm-KU-F1r">
+                                <rect key="frame" x="-0.66666666666665719" y="344" width="375" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab_feeds" translatesAutoresizingMaskIntoConstraints="NO" id="Sdn-pU-DyQ">
+                                        <rect key="frame" x="175.66666666666666" y="0.0" width="24" height="42.666666666666664"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="7Ud-HZ-C1Z"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5s-FW-2BU">
+                                        <rect key="frame" x="153.33333333333331" y="42.666666666666686" width="68.666666666666686" height="42.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74f-PZ-vAm">
+                                        <rect key="frame" x="161" y="85.333333333333314" width="53" height="42.666666666666657"/>
+                                        <state key="normal" title="Refresh"/>
+                                        <connections>
+                                            <action selector="refreshPosts:" destination="Z2v-YM-eUa" eventType="touchUpInside" id="vY0-TL-42e"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="RTZ-8A-Rbx"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SBm-KU-F1r" firstAttribute="width" secondItem="U10-3q-aXX" secondAttribute="width" id="2TO-4C-8Gx"/>
+                            <constraint firstItem="rlk-gN-Ifk" firstAttribute="leading" secondItem="3Dj-6F-n8a" secondAttribute="leading" id="2pW-3I-rpA"/>
+                            <constraint firstItem="SBm-KU-F1r" firstAttribute="centerY" secondItem="3Dj-6F-n8a" secondAttribute="centerY" id="AES-D0-8nS"/>
+                            <constraint firstItem="SBm-KU-F1r" firstAttribute="centerX" secondItem="3Dj-6F-n8a" secondAttribute="centerX" id="CK4-KB-2df"/>
+                            <constraint firstItem="3Dj-6F-n8a" firstAttribute="trailing" secondItem="rlk-gN-Ifk" secondAttribute="trailing" id="QLt-14-I6W"/>
+                            <constraint firstItem="rlk-gN-Ifk" firstAttribute="top" secondItem="3Dj-6F-n8a" secondAttribute="top" id="ad6-SK-KbY"/>
+                            <constraint firstItem="BXc-1T-uJS" firstAttribute="centerX" secondItem="3Dj-6F-n8a" secondAttribute="centerX" id="dzn-vj-a2t"/>
+                            <constraint firstItem="BXc-1T-uJS" firstAttribute="centerY" secondItem="3Dj-6F-n8a" secondAttribute="centerY" id="fdI-il-yao"/>
+                            <constraint firstItem="3Dj-6F-n8a" firstAttribute="bottom" secondItem="rlk-gN-Ifk" secondAttribute="bottom" id="rQe-kr-E8b"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Dj-6F-n8a"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="JSON Feed Reader" id="esj-gC-ejo"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="BXc-1T-uJS" id="4Mp-aE-d2d"/>
+                        <outlet property="emptyView" destination="SBm-KU-F1r" id="FVl-kq-vx3"/>
+                        <outlet property="tableView" destination="rlk-gN-Ifk" id="TnF-ZS-Xdr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eVl-4a-r8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="601"/>
+        </scene>
+        <!--Post Content View Controller-->
+        <scene sceneID="aWf-Yg-COl">
+            <objects>
+                <viewController storyboardIdentifier="PostContentViewController" id="x6Y-pz-13C" customClass="PostContentViewController" customModule="JSON_Feed_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hSN-Dp-Im5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e5E-Aq-igR">
+                                <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                                <items>
+                                    <navigationItem title="Title" id="lFb-xL-Ueo">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="G4c-X3-6n4">
+                                            <connections>
+                                                <action selector="onDoneClick:" destination="x6Y-pz-13C" id="8xa-JC-Pl9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <webView contentMode="scaleToFill" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzS-GE-gxJ">
+                                <rect key="frame" x="0.0" y="140" width="375" height="638"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NzS-GE-gxJ" firstAttribute="bottom" secondItem="QjJ-wM-80H" secondAttribute="bottom" id="2EF-ir-AA4"/>
+                            <constraint firstItem="e5E-Aq-igR" firstAttribute="trailing" secondItem="QjJ-wM-80H" secondAttribute="trailing" id="7ki-cO-ke3"/>
+                            <constraint firstItem="NzS-GE-gxJ" firstAttribute="trailing" secondItem="QjJ-wM-80H" secondAttribute="trailing" id="Se2-G2-NdF"/>
+                            <constraint firstItem="e5E-Aq-igR" firstAttribute="leading" secondItem="QjJ-wM-80H" secondAttribute="leading" id="VKu-vB-cBc"/>
+                            <constraint firstItem="e5E-Aq-igR" firstAttribute="top" secondItem="QjJ-wM-80H" secondAttribute="top" id="X52-Ic-ctl"/>
+                            <constraint firstItem="NzS-GE-gxJ" firstAttribute="leading" secondItem="QjJ-wM-80H" secondAttribute="leading" id="pWR-ix-37V"/>
+                            <constraint firstItem="NzS-GE-gxJ" firstAttribute="top" secondItem="e5E-Aq-igR" secondAttribute="bottom" id="vX8-vC-nWP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QjJ-wM-80H"/>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="G4c-X3-6n4" id="9Eb-BN-1IP"/>
+                        <outlet property="navItem" destination="lFb-xL-Ueo" id="ciC-zY-XAw"/>
+                        <outlet property="webView" destination="NzS-GE-gxJ" id="3GT-5z-dOS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bs1-dy-T3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1554" y="601"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="cqO-Rx-TjY">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="vr8-mT-AE3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OTz-Yi-wnK">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BSq-JI-WM7" kind="relationship" relationship="viewControllers" id="Znc-fQ-DnO"/>
+                        <segue destination="5Kk-iC-5ps" kind="relationship" relationship="viewControllers" id="RxL-YX-0jj"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ab-Bq-xs9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-870" y="245"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="peK-KK-1B7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BSq-JI-WM7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="tab_home" id="Aae-bU-VOH"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IEO-81-3Jj">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="1WN-4a-ycj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H05-em-PCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="57.600000000000001" y="-95.320197044334975"/>
+        </scene>
+        <!--Feeds-->
+        <scene sceneID="u7D-Pi-c3j">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Kk-iC-5ps" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Feeds" image="tab_feeds" id="v0p-cq-a4f"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CLn-ih-VQE">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Z2v-YM-eUa" kind="relationship" relationship="rootViewController" id="u7Z-WC-yb1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="frr-yM-ng7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="56" y="601.47783251231533"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="json-feed" width="40" height="40"/>
+        <image name="tab_feeds" width="24" height="24"/>
+        <image name="tab_home" width="24" height="24"/>
+    </resources>
+</document>
