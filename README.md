@@ -1,12 +1,12 @@
 # iOS Nanodegree Projects
-This is master repository for my course of iOS Nanodegree with Udacity. Each project covers important aspect of iOS app development and is hosted as separate projects. For more details on each project, check the project's repository.
+This is master repository for my course of iOS Nanodegree with Udacity. Each project covers important aspect of iOS app development and is hosted as subdirectory. For more details on each project, check the project's directory.
 
-| # | Project         | Aspect Covered | Preview | Link |
+| # | Project         | Aspect Covered | Preview | Description |
 | - | --------------- | -------------- | ------- | --------------- |
-| 1 | Pitch Perfect   | Intro to iOS App Development with Swift | ![Pitch Perfect Preview](https://raw.githubusercontent.com/rajanikantdeshmukh/PitchPerfect/953f87620d0cc4336b02b440f0d2c94aadfb127e/Screenshots/PlaySoundScreen.png) | [GitHub](https://github.com/rajanikantdeshmukh/PitchPerfect) |
-| 2 | MemeMe          | UIKit Fundamentals | ![MemeMe Preview](https://raw.githubusercontent.com/rajanikantdeshmukh/MemeMe/v2/Screenshots/MemeEditorFilled.png) | [GitHub](https://github.com/rajanikantdeshmukh/MemeMe) |
-| 3 | On the Map      | iOS Networking with Swift | ![On the Map Preview](https://raw.githubusercontent.com/rajanikantdeshmukh/OnTheMap/edd01392c467155ecad7d0455e533928b3d4a33b/Screenshots/Map-Pin.png) | [GitHub](https://github.com/rajanikantdeshmukh/OnTheMap) |
-| 4 | Virtual Tourist | iOS Persistence and Core Data | ![Virtual Tourist Preview](https://raw.githubusercontent.com/rajanikantdeshmukh/VirtualTourist/5732499198ab7d322a10424c70d22bdf9a7c2be8/Screenshots/Map-ViewPin.png) | [GitHub](https://github.com/rajanikantdeshmukh/VirtualTourist) |
+| 1 | Pitch Perfect   | Intro to iOS App Development with Swift | ![Pitch Perfect Preview](https://raw.githubusercontent.com/aruke/iOS-Nanodegree-Projects/master/P1%20PitchPerfect/Screenshots/PlaySoundScreen.png) | iOS app for recording voice and playing it through different voices. |
+| 2 | MemeMe          | UIKit Fundamentals | ![MemeMe Preview](https://raw.githubusercontent.com/aruke/iOS-Nanodegree-Projects/master/P2%20MemeMe/Screenshots/MemeEditorFilled.png) | Meme creator app on iOS platform. |
+| 3 | On the Map      | iOS Networking with Swift | ![On the Map Preview](https://raw.githubusercontent.com/aruke/iOS-Nanodegree-Projects/master/P3%20OnTheMap/Screenshots/Map-Pin.png) | An iOS application to find Udacity Students studying across the world. |
+| 4 | Virtual Tourist | iOS Persistence and Core Data | ![Virtual Tourist Preview](https://raw.githubusercontent.com/aruke/iOS-Nanodegree-Projects/master/P4%20VirtualTourist/Screenshots/Map-ViewPin.png) | An iOS application to download and view photos specific to selected locations. |
 
 ## Certificate
 You can check my Nanodegree Certificate [here](https://confirm.udacity.com/35KLMLRH).
